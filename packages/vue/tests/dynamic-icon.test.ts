@@ -6,12 +6,12 @@ import { IsIcon } from '../src'
 describe('IsIcon (Dynamic Component)', () => {
   it('renders correctly with valid icon name', async () => {
     const wrapper = mount(IsIcon, {
-      props: { name: 'home' }
+      props: { name: 'home' },
     })
-    
+
     // Wait for async component to load
     await flushPromises()
-    
+
     // The component should exist
     expect(wrapper.exists()).toBe(true)
   })
@@ -22,12 +22,12 @@ describe('IsIcon (Dynamic Component)', () => {
         name: 'home',
         size: 32,
         color: '#ff0000',
-        variant: 'bold'
-      }
+        variant: 'bold',
+      },
     })
-    
+
     await flushPromises()
-    
+
     // Props should be passed through
     expect(wrapper.props('size')).toBe(32)
     expect(wrapper.props('color')).toBe('#ff0000')
@@ -36,10 +36,10 @@ describe('IsIcon (Dynamic Component)', () => {
 
   it('accepts all valid icon names', () => {
     const validNames = ['home', 'setting', 'user', 'heart', 'search-normal']
-    
+
     validNames.forEach(name => {
       const wrapper = mount(IsIcon, {
-        props: { name: name as any }
+        props: { name: name as any },
       })
       expect(wrapper.exists()).toBe(true)
     })
@@ -47,9 +47,9 @@ describe('IsIcon (Dynamic Component)', () => {
 
   it('uses default props when not specified', () => {
     const wrapper = mount(IsIcon, {
-      props: { name: 'home' }
+      props: { name: 'home' },
     })
-    
+
     expect(wrapper.props('size')).toBe(24)
     expect(wrapper.props('color')).toBe('currentColor')
     expect(wrapper.props('variant')).toBe('linear')
@@ -57,17 +57,15 @@ describe('IsIcon (Dynamic Component)', () => {
 
   it('warns when icon name is not found', async () => {
     const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
-    
+
     const wrapper = mount(IsIcon, {
-      props: { name: 'invalid-icon-name' as any }
+      props: { name: 'invalid-icon-name' as any },
     })
-    
+
     await flushPromises()
-    
-    expect(consoleSpy).toHaveBeenCalledWith(
-      expect.stringContaining('not found')
-    )
-    
+
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('not found'))
+
     consoleSpy.mockRestore()
   })
 })
@@ -80,12 +78,12 @@ describe('IsIcon Variants', () => {
       const wrapper = mount(IsIcon, {
         props: {
           name: 'home',
-          variant
-        }
+          variant,
+        },
       })
-      
+
       await flushPromises()
-      
+
       expect(wrapper.props('variant')).toBe(variant)
     })
   })

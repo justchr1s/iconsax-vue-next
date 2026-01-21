@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   variant: 'linear'
 })
 
-const svgSize = computed(() => 
+const svgSize = computed(() =>
   typeof props.size === 'number' ? `${props.size}px` : props.size
 )
 
@@ -19,7 +19,8 @@ const svgData = {
   linear: {
     viewBox: '0 0 24 24',
     content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.38 10.38v3.23c0 2.69-1.08 3.77-3.77 3.77h-3.23c-2.69 0-3.77-1.08-3.77-3.77v-3.23c0-2.69 1.08-3.77 3.77-3.77h3.23c2.7.01 3.77 1.08 3.77 3.77z"/>
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M22 5.77V9c0 2.69-1.08 3.77-3.77 3.77h-.85v-2.38c0-2.69-1.08-3.77-3.77-3.77h-2.38v-.85C11.23 3.08 12.31 2 15 2h3.23C20.92 2 22 3.08 22 5.77zM2 18.23V15c0-2.69 1.08-3.77 3.77-3.77h.85v2.38c0 2.69 1.08 3.77 3.77 3.77h2.38v.85C12.77 20.92 11.69 22 9 22H5.77C3.08 22 2 20.92 2 18.23z"/>`
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M22 5.77V9c0 2.69-1.08 3.77-3.77 3.77h-.85v-2.38c0-2.69-1.08-3.77-3.77-3.77h-2.38v-.85C11.23 3.08 12.31 2 15 2h3.23C20.92 2 22 3.08 22 5.77zM2 18.23V15c0-2.69 1.08-3.77 3.77-3.77h.85v2.38c0 2.69 1.08 3.77 3.77 3.77h2.38v.85C12.77 20.92 11.69 22 9 22H5.77C3.08 22 2 20.92 2 18.23z"/>`,
+    isStroke: true
   },
   outline: null,
   twotone: null
@@ -34,8 +35,9 @@ const currentVariant = computed(() => svgData[props.variant] || svgData.linear)
     :viewBox="currentVariant?.viewBox"
     :width="svgSize"
     :height="svgSize"
-    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
-    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    :fill="currentVariant?.isStroke ? 'none' : 'currentColor'"
+    :stroke="currentVariant?.isStroke ? 'currentColor' : 'none'"
+    :style="{ color }"
     v-html="currentVariant?.content"
   />
 </template>

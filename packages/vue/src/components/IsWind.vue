@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   variant: 'linear'
 })
 
-const svgSize = computed(() => 
+const svgSize = computed(() =>
   typeof props.size === 'number' ? `${props.size}px` : props.size
 )
 
@@ -16,33 +16,39 @@ const svgData = {
   bold: {
     viewBox: '0 0 24 24',
     content: `<path d="M18.5 22.75a4.26 4.26 0 01-4.25-4.25V18c0-.41.34-.75.75-.75s.75.34.75.75v.5c0 1.52 1.23 2.75 2.75 2.75s2.75-1.23 2.75-2.75-1.23-2.75-2.75-2.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h16.5a4.26 4.26 0 014.25 4.25 4.26 4.26 0 01-4.25 4.25zM18.5 12.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h16.5c1.52 0 2.75-1.23 2.75-2.75s-1.23-2.75-2.75-2.75-2.75 1.23-2.75 2.75V9c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-.5a4.26 4.26 0 014.25-4.25 4.26 4.26 0 014.25 4.25 4.26 4.26 0 01-4.25 4.25z"/>
-  <path d="M9.31 9.751H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h7.31c1.07 0 1.94-.87 1.94-1.94 0-1.07-.87-1.94-1.94-1.94-1.07 0-1.94.87-1.94 1.94v.38a.749.749 0 11-1.5 0v-.38a3.44 3.44 0 113.44 3.44z"/>`
+  <path d="M9.31 9.751H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h7.31c1.07 0 1.94-.87 1.94-1.94 0-1.07-.87-1.94-1.94-1.94-1.07 0-1.94.87-1.94 1.94v.38a.749.749 0 11-1.5 0v-.38a3.44 3.44 0 113.44 3.44z"/>`,
+    isStroke: false
   },
   broken: {
     viewBox: '0 0 24 24',
-    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 15h16.5c1.93 0 3.5 1.57 3.5 3.5S20.43 22 18.5 22 15 20.43 15 18.5V18M9.05 12h9.45c1.92 0 3.5-1.57 3.5-3.5C22 6.58 20.42 5 18.5 5A3.51 3.51 0 0015 8.5V9M2 12h2.98M2 9h7.31a2.69 2.69 0 10-2.69-2.69v.38"/>`
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 15h16.5c1.93 0 3.5 1.57 3.5 3.5S20.43 22 18.5 22 15 20.43 15 18.5V18M9.05 12h9.45c1.92 0 3.5-1.57 3.5-3.5C22 6.58 20.42 5 18.5 5A3.51 3.51 0 0015 8.5V9M2 12h2.98M2 9h7.31a2.69 2.69 0 10-2.69-2.69v.38"/>`,
+    isStroke: true
   },
   bulk: {
     viewBox: '0 0 24 24',
     content: `<path d="M18.5 22.75a4.26 4.26 0 01-4.25-4.25V18c0-.41.34-.75.75-.75s.75.34.75.75v.5c0 1.52 1.23 2.75 2.75 2.75s2.75-1.23 2.75-2.75-1.23-2.75-2.75-2.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h16.5a4.26 4.26 0 014.25 4.25 4.26 4.26 0 01-4.25 4.25z"/>
   <path d="M18.5 12.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h16.5c1.52 0 2.75-1.23 2.75-2.75s-1.23-2.75-2.75-2.75-2.75 1.23-2.75 2.75V9c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-.5a4.26 4.26 0 014.25-4.25 4.26 4.26 0 014.25 4.25 4.26 4.26 0 01-4.25 4.25z" opacity=".4"/>
-  <path d="M9.31 9.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h7.31c1.07 0 1.94-.87 1.94-1.94 0-1.07-.87-1.94-1.94-1.94-1.07 0-1.94.87-1.94 1.94v.38a.749.749 0 11-1.5 0v-.38a3.44 3.44 0 113.44 3.44z"/>`
+  <path d="M9.31 9.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h7.31c1.07 0 1.94-.87 1.94-1.94 0-1.07-.87-1.94-1.94-1.94-1.07 0-1.94.87-1.94 1.94v.38a.749.749 0 11-1.5 0v-.38a3.44 3.44 0 113.44 3.44z"/>`,
+    isStroke: false
   },
   linear: {
     viewBox: '0 0 24 24',
     content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 15h16.5c1.93 0 3.5 1.57 3.5 3.5S20.43 22 18.5 22 15 20.43 15 18.5V18M2 12h16.5c1.92 0 3.5-1.57 3.5-3.5C22 6.58 20.42 5 18.5 5A3.51 3.51 0 0015 8.5V9"/>
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 9h7.31a2.69 2.69 0 10-2.69-2.69v.38"/>`
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 9h7.31a2.69 2.69 0 10-2.69-2.69v.38"/>`,
+    isStroke: true
   },
   outline: {
     viewBox: '0 0 24 24',
     content: `<path d="M18.5 22.75a4.26 4.26 0 01-4.25-4.25V18c0-.41.34-.75.75-.75s.75.34.75.75v.5c0 1.52 1.23 2.75 2.75 2.75s2.75-1.23 2.75-2.75-1.23-2.75-2.75-2.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h16.5a4.26 4.26 0 014.25 4.25 4.26 4.26 0 01-4.25 4.25zM18.5 12.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h16.5c1.52 0 2.75-1.23 2.75-2.75s-1.23-2.75-2.75-2.75-2.75 1.23-2.75 2.75V9c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-.5a4.26 4.26 0 014.25-4.25 4.26 4.26 0 014.25 4.25 4.26 4.26 0 01-4.25 4.25z"/>
-  <path d="M9.31 9.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h7.31c1.07 0 1.94-.87 1.94-1.94 0-1.07-.87-1.94-1.94-1.94-1.07 0-1.94.87-1.94 1.94v.38c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-.38a3.44 3.44 0 113.44 3.44z"/>`
+  <path d="M9.31 9.75H2c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h7.31c1.07 0 1.94-.87 1.94-1.94 0-1.07-.87-1.94-1.94-1.94-1.07 0-1.94.87-1.94 1.94v.38c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-.38a3.44 3.44 0 113.44 3.44z"/>`,
+    isStroke: false
   },
   twotone: {
     viewBox: '0 0 24 24',
     content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 15h16.5c1.93 0 3.5 1.57 3.5 3.5S20.43 22 18.5 22 15 20.43 15 18.5V18"/>
   <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 12h16.5c1.92 0 3.5-1.57 3.5-3.5C22 6.58 20.42 5 18.5 5A3.51 3.51 0 0015 8.5V9" opacity=".4"/>
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 9h7.31a2.69 2.69 0 10-2.69-2.69v.38"/>`
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M2 9h7.31a2.69 2.69 0 10-2.69-2.69v.38"/>`,
+    isStroke: true
   }
 }
 
@@ -55,8 +61,9 @@ const currentVariant = computed(() => svgData[props.variant] || svgData.linear)
     :viewBox="currentVariant?.viewBox"
     :width="svgSize"
     :height="svgSize"
-    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
-    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    :fill="currentVariant?.isStroke ? 'none' : 'currentColor'"
+    :stroke="currentVariant?.isStroke ? 'currentColor' : 'none'"
+    :style="{ color }"
     v-html="currentVariant?.content"
   />
 </template>

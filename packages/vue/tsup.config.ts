@@ -7,10 +7,8 @@ export default defineConfig({
   dts: false,
   clean: true,
   external: ['vue'],
-  esbuildPlugins: [
-    vue()
-  ],
+  esbuildPlugins: [vue()],
   treeshake: true,
   splitting: true,
-  sourcemap: true
+  sourcemap: true,
 })

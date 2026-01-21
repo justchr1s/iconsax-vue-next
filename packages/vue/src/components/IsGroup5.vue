@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   variant: 'linear'
 })
 
-const svgSize = computed(() => 
+const svgSize = computed(() =>
   typeof props.size === 'number' ? `${props.size}px` : props.size
 )
 
@@ -18,7 +18,8 @@ const svgData = {
   bulk: null,
   linear: {
     viewBox: '0 0 24 24',
-    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 2h12c1.1 0 2 .9 2 2v4.32H4V4c0-1.1.9-2 2-2zM4 8.32v3.56c0 1.08.58 2.08 1.53 2.61l2.96 1.67c.63.35 1.02 1.02 1.02 1.74V20c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2v-2.1c0-.72.39-1.39 1.02-1.74l2.96-1.67c.94-.53 1.53-1.53 1.53-2.61V8.32H4z"/>`
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 2h12c1.1 0 2 .9 2 2v4.32H4V4c0-1.1.9-2 2-2zM4 8.32v3.56c0 1.08.58 2.08 1.53 2.61l2.96 1.67c.63.35 1.02 1.02 1.02 1.74V20c0 1.1.9 2 2 2h1c1.1 0 2-.9 2-2v-2.1c0-.72.39-1.39 1.02-1.74l2.96-1.67c.94-.53 1.53-1.53 1.53-2.61V8.32H4z"/>`,
+    isStroke: true
   },
   outline: null,
   twotone: null
@@ -33,8 +34,9 @@ const currentVariant = computed(() => svgData[props.variant] || svgData.linear)
     :viewBox="currentVariant?.viewBox"
     :width="svgSize"
     :height="svgSize"
-    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
-    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    :fill="currentVariant?.isStroke ? 'none' : 'currentColor'"
+    :stroke="currentVariant?.isStroke ? 'currentColor' : 'none'"
+    :style="{ color }"
     v-html="currentVariant?.content"
   />
 </template>

@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   variant: 'linear'
 })
 
-const svgSize = computed(() => 
+const svgSize = computed(() =>
   typeof props.size === 'number' ? `${props.size}px` : props.size
 )
 
@@ -19,12 +19,14 @@ const svgData = {
     viewBox: '0 0 24 24',
     content: `<path d="M15 3v9c0 1.1-.9 2-2 2H2V6c0-2.21 1.79-4 4-4h8c.55 0 1 .45 1 1z"/>
   <path d="M22 14v3c0 1.66-1.34 3-3 3h-1c0-1.1-.9-2-2-2s-2 .9-2 2h-4c0-1.1-.9-2-2-2s-2 .9-2 2H5c-1.66 0-3-1.34-3-3v-3h11c1.1 0 2-.9 2-2V5h1.84c.72 0 1.38.39 1.74 1.01L20.29 9H19c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h3z" opacity=".4"/>
-  <path d="M8 22a2 2 0 100-4 2 2 0 000 4zM16 22a2 2 0 100-4 2 2 0 000 4zM22 12.53V14h-3c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1.29l1.45 2.54c.17.3.26.64.26.99z"/>`
+  <path d="M8 22a2 2 0 100-4 2 2 0 000 4zM16 22a2 2 0 100-4 2 2 0 000 4zM22 12.53V14h-3c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1.29l1.45 2.54c.17.3.26.64.26.99z"/>`,
+    isStroke: false
   },
   linear: {
     viewBox: '0 0 24 24',
     content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.57 15.27l6.54-6.54M8.98 10.37a1.23 1.23 0 100-2.46 1.23 1.23 0 000 2.46zM15.52 16.09a1.23 1.23 0 100-2.46 1.23 1.23 0 000 2.46z"/>
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>`
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>`,
+    isStroke: true
   },
   outline: null,
   twotone: null
@@ -39,8 +41,9 @@ const currentVariant = computed(() => svgData[props.variant] || svgData.linear)
     :viewBox="currentVariant?.viewBox"
     :width="svgSize"
     :height="svgSize"
-    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
-    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    :fill="currentVariant?.isStroke ? 'none' : 'currentColor'"
+    :stroke="currentVariant?.isStroke ? 'currentColor' : 'none'"
+    :style="{ color }"
     v-html="currentVariant?.content"
   />
 </template>

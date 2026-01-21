@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   variant: 'linear'
 })
 
-const svgSize = computed(() => 
+const svgSize = computed(() =>
   typeof props.size === 'number' ? `${props.size}px` : props.size
 )
 
@@ -26,7 +26,8 @@ const svgData = {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M9 5c0 .75-.21 1.46-.58 2.06-.21.36-.48.68-.79.94-.7.63-1.62 1-2.63 1a3.97 3.97 0 01-3.42-1.94A3.92 3.92 0 011 5c0-1.26.58-2.39 1.5-3.12A3.999 3.999 0 019 5z"/>
   <g stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" opacity=".4">
     <path d="M6.069 6.04l-2.11-2.11M6.04 3.96L3.93 6.07"/>
-  </g>`
+  </g>`,
+    isStroke: true
   }
 }
 
@@ -39,8 +40,9 @@ const currentVariant = computed(() => svgData[props.variant] || svgData.twotone)
     :viewBox="currentVariant?.viewBox"
     :width="svgSize"
     :height="svgSize"
-    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
-    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    :fill="currentVariant?.isStroke ? 'none' : 'currentColor'"
+    :stroke="currentVariant?.isStroke ? 'currentColor' : 'none'"
+    :style="{ color }"
     v-html="currentVariant?.content"
   />
 </template>

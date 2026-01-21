@@ -64,6 +64,7 @@ pnpm typecheck
 Six styles per icon: `bold`, `broken`, `bulk`, `linear` (default), `outline`, `twotone`
 
 Each generated component:
+
 - Embeds all variant SVG data inline
 - Switches content based on `variant` prop
 - Applies `fill` for bold/bulk, `stroke` for linear/outline/broken/twotone
@@ -71,6 +72,7 @@ Each generated component:
 ### Nuxt Module
 
 The Nuxt module (`packages/nuxt/src/module.ts`) uses `@nuxt/kit` to:
+
 - Always register `IsIcon` (dynamic) component
 - Optionally register all icons globally via `global: true` option
 - Configure component prefix via `prefix` option (default: `Is`)
@@ -92,6 +94,7 @@ The Nuxt module (`packages/nuxt/src/module.ts`) uses `@nuxt/kit` to:
 ## Testing
 
 Tests are in `packages/vue/tests/`. Run a specific test file:
+
 ```bash
 pnpm --filter @ratoufa/iconsax-vue test tests/icons.test.ts
 ```

@@ -12,12 +12,12 @@ const TEMP_DIR = './temp-blade-iconsax'
 const ICONS_DIR = './icons'
 
 const VARIANT_MAP: Record<string, string> = {
-  'bol': 'bold',
-  'bro': 'broken', 
-  'bul': 'bulk',
-  'lin': 'linear',
-  'out': 'outline',
-  'two': 'twotone'
+  bol: 'bold',
+  bro: 'broken',
+  bul: 'bulk',
+  lin: 'linear',
+  out: 'outline',
+  two: 'twotone',
 }
 
 async function main() {
@@ -54,12 +54,12 @@ async function main() {
     // Files are named like: bol-airdrop.svg, lin-home.svg
     const [prefix, ...nameParts] = file.replace('.svg', '').split('-')
     const variant = VARIANT_MAP[prefix]
-    
+
     if (variant && nameParts.length > 0) {
       const iconName = nameParts.join('-')
       const srcPath = join(svgDir, file)
       const destPath = join(ICONS_DIR, variant, `${iconName}.svg`)
-      
+
       copyFileSync(srcPath, destPath)
       count++
     }

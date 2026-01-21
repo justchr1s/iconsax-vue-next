@@ -1,390 +1,613 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-// Import statique (tree-shakable)
-import { 
-  IsHome, 
-  IsSetting, 
-  IsHeart, 
-  IsUser, 
-  IsSearchNormal,
-  IsIcon,
-  iconNames,
-  iconVariants
-} from '@ratoufa/iconsax-vue'
-
+import { ref, computed } from 'vue'
+import { IsIcon, iconNames, iconVariants } from '@ratoufa/iconsax-vue'
 import type { IconName, IconVariant } from '@ratoufa/iconsax-vue'
 
-// États réactifs
+const searchQuery = ref('')
 const selectedVariant = ref<IconVariant>('linear')
-const selectedSize = ref(32)
-const selectedColor = ref('#6366f1')
-const dynamicIconName = ref<IconName>('home')
+const selectedSize = ref(24)
+const selectedColor = ref('currentColor')
+const copiedIcon = ref<string | null>(null)
+const hoveredIcon = ref<string | null>(null)
 
-// Liste des icônes pour le test dynamique
-const menuItems: { icon: IconName; label: string }[] = [
-  { icon: 'home', label: 'Accueil' },
-  { icon: 'setting', label: 'Paramètres' },
-  { icon: 'user', label: 'Profil' },
-  { icon: 'heart', label: 'Favoris' },
-  { icon: 'search-normal', label: 'Recherche' },
+const colorPresets = [
+  { name: 'Default', value: 'currentColor' },
+  { name: 'White', value: '#ffffff' },
+  { name: 'Red', value: '#ef4444' },
+  { name: 'Orange', value: '#f97316' },
+  { name: 'Yellow', value: '#eab308' },
+  { name: 'Green', value: '#22c55e' },
+  { name: 'Blue', value: '#3b82f6' },
+  { name: 'Indigo', value: '#6366f1' },
+  { name: 'Purple', value: '#a855f7' },
+  { name: 'Pink', value: '#ec4899' },
 ]
+
+const filteredIcons = computed(() => {
+  if (!searchQuery.value.trim()) return iconNames
+  const q = searchQuery.value.toLowerCase()
+  return iconNames.filter(name => name.includes(q))
+})
+
+const copyCode = (name: IconName) => {
+  const pascal = name
+    .split('-')
+    .map(s => s[0].toUpperCase() + s.slice(1))
+    .join('')
+  navigator.clipboard.writeText(`<Is${pascal} />`)
+  copiedIcon.value = name
+  setTimeout(() => (copiedIcon.value = null), 1200)
+}
 </script>
 
 <template>
-  <div class="container">
-    <header>
-      <h1>🐿️ Iconsax Vue - Playground</h1>
-      <p>Teste les icônes en temps réel</p>
-    </header>
-
-    <!-- Section 1: Import statique -->
-    <section>
-      <h2>1️⃣ Import Statique (Tree-shakable)</h2>
-      <p class="code">import { IsHome, IsSetting } from '@ratoufa/iconsax-vue'</p>
-      
-      <div class="icons-grid">
-        <div class="icon-card">
-          <IsHome :variant="selectedVariant" :size="selectedSize" :color="selectedColor" />
-          <span>IsHome</span>
-        </div>
-        <div class="icon-card">
-          <IsSetting :variant="selectedVariant" :size="selectedSize" :color="selectedColor" />
-          <span>IsSetting</span>
-        </div>
-        <div class="icon-card">
-          <IsHeart :variant="selectedVariant" :size="selectedSize" :color="selectedColor" />
-          <span>IsHeart</span>
-        </div>
-        <div class="icon-card">
-          <IsUser :variant="selectedVariant" :size="selectedSize" :color="selectedColor" />
-          <span>IsUser</span>
-        </div>
-        <div class="icon-card">
-          <IsSearchNormal :variant="selectedVariant" :size="selectedSize" :color="selectedColor" />
-          <span>IsSearchNormal</span>
-        </div>
+  <div class="layout">
+    <nav class="topbar">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect width="24" height="24" rx="6" fill="url(#g1)" />
+          <path d="M7 12h10M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="24" y2="24">
+              <stop stop-color="#6366f1" />
+              <stop offset="1" stop-color="#8b5cf6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>iconsax-vue</span>
       </div>
-    </section>
 
-    <!-- Section 2: Contrôles -->
-    <section>
-      <h2>2️⃣ Contrôles</h2>
-      
-      <div class="controls">
-        <div class="control">
-          <label>Variant:</label>
-          <select v-model="selectedVariant">
-            <option v-for="v in iconVariants" :key="v" :value="v">{{ v }}</option>
-          </select>
-        </div>
-        
-        <div class="control">
-          <label>Size: {{ selectedSize }}px</label>
-          <input type="range" v-model.number="selectedSize" min="16" max="64" />
-        </div>
-        
-        <div class="control">
-          <label>Color:</label>
-          <input type="color" v-model="selectedColor" />
-          <span>{{ selectedColor }}</span>
-        </div>
+      <div class="search-wrapper">
+        <IsIcon
+          name="search-normal"
+          variant="linear"
+          :size="16"
+          color="currentColor"
+          class="search-icon"
+        />
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Rechercher parmi 946 icônes..."
+          class="search"
+        />
+        <kbd v-if="!searchQuery">/</kbd>
       </div>
-    </section>
 
-    <!-- Section 3: Import dynamique -->
-    <section>
-      <h2>3️⃣ Import Dynamique (IsIcon)</h2>
-      <p class="code">&lt;IsIcon name="home" variant="bold" /&gt;</p>
-      
-      <div class="dynamic-demo">
-        <div class="icon-selector">
-          <label>Icône:</label>
-          <select v-model="dynamicIconName">
-            <option v-for="name in iconNames" :key="name" :value="name">{{ name }}</option>
-          </select>
-        </div>
-        
-        <div class="icon-preview">
-          <IsIcon 
-            :name="dynamicIconName" 
-            :variant="selectedVariant" 
-            :size="64" 
-            :color="selectedColor" 
-          />
-        </div>
-      </div>
-    </section>
+      <a href="https://github.com" target="_blank" class="github-link">
+        <IsIcon name="code" variant="linear" :size="18" color="currentColor" />
+        GitHub
+      </a>
+    </nav>
 
-    <!-- Section 4: Tous les variants -->
-    <section>
-      <h2>4️⃣ Tous les Variants</h2>
-      
-      <div class="variants-grid">
-        <div v-for="variant in iconVariants" :key="variant" class="variant-card">
-          <IsHome :variant="variant" :size="48" :color="selectedColor" />
-          <span>{{ variant }}</span>
-        </div>
-      </div>
-    </section>
+    <div class="content">
+      <aside class="sidebar">
+        <section>
+          <h3>Style</h3>
+          <div class="variant-grid">
+            <button
+              v-for="v in iconVariants"
+              :key="v"
+              @click="selectedVariant = v"
+              :class="['variant-chip', { active: selectedVariant === v }]"
+            >
+              <IsIcon name="home" :variant="v" :size="18" color="currentColor" />
+              {{ v }}
+            </button>
+          </div>
+        </section>
 
-    <!-- Section 5: Menu simulé -->
-    <section>
-      <h2>5️⃣ Exemple: Menu avec icônes dynamiques</h2>
-      
-      <nav class="demo-menu">
-        <a 
-          v-for="item in menuItems" 
-          :key="item.icon" 
-          href="#"
-          class="menu-item"
-        >
-          <IsIcon :name="item.icon" :variant="selectedVariant" :size="20" />
-          <span>{{ item.label }}</span>
-        </a>
-      </nav>
-    </section>
+        <section>
+          <h3>Taille</h3>
+          <div class="size-picker">
+            <button
+              v-for="s in [16, 20, 24, 32]"
+              :key="s"
+              @click="selectedSize = s"
+              :class="['size-btn', { active: selectedSize === s }]"
+            >
+              {{ s }}
+            </button>
+          </div>
+        </section>
 
-    <!-- Section 6: Types TypeScript -->
-    <section>
-      <h2>6️⃣ Types TypeScript</h2>
-      
-      <div class="types-info">
-        <div class="type-box">
-          <h4>IconName</h4>
-          <code>{{ iconNames.join(' | ') }}</code>
-        </div>
-        <div class="type-box">
-          <h4>IconVariant</h4>
-          <code>{{ iconVariants.join(' | ') }}</code>
-        </div>
-      </div>
-    </section>
+        <section>
+          <h3>Couleur</h3>
+          <div class="color-picker">
+            <button
+              v-for="c in colorPresets"
+              :key="c.value"
+              @click="selectedColor = c.value"
+              :class="['color-btn', { active: selectedColor === c.value }]"
+              :style="{ '--color': c.value === 'currentColor' ? 'var(--text)' : c.value }"
+              :title="c.name"
+            >
+              <span class="color-swatch"></span>
+            </button>
+          </div>
+        </section>
 
-    <footer>
-      <p>✅ Si tu vois les icônes ci-dessus, le package fonctionne !</p>
-      <p>📦 @ratoufa/iconsax-vue v1.0.0</p>
-    </footer>
+        <section class="preview-section" v-if="hoveredIcon">
+          <h3>Aperçu</h3>
+          <div class="preview-card">
+            <IsIcon
+              :name="hoveredIcon"
+              :variant="selectedVariant"
+              :size="48"
+              :color="selectedColor"
+            />
+            <div class="preview-info">
+              <span class="preview-name">{{ hoveredIcon }}</span>
+              <code class="preview-code"
+                >&lt;Is{{
+                  hoveredIcon
+                    .split('-')
+                    .map(s => s[0].toUpperCase() + s.slice(1))
+                    .join('')
+                }}
+                /&gt;</code
+              >
+            </div>
+          </div>
+        </section>
+
+        <section class="install-section">
+          <h3>Installation</h3>
+          <div class="code-box">
+            <code>pnpm add @ratoufa/iconsax-vue</code>
+          </div>
+        </section>
+      </aside>
+
+      <main class="main">
+        <div class="grid-header">
+          <span class="count">{{ filteredIcons.length }} icônes</span>
+          <span class="hint">Cliquer pour copier</span>
+        </div>
+
+        <div class="icon-grid">
+          <button
+            v-for="name in filteredIcons"
+            :key="name"
+            @click="copyCode(name)"
+            @mouseenter="hoveredIcon = name"
+            @mouseleave="hoveredIcon = null"
+            :class="['icon-btn', { copied: copiedIcon === name }]"
+          >
+            <IsIcon
+              :name="name"
+              :variant="selectedVariant"
+              :size="selectedSize"
+              :color="selectedColor"
+            />
+            <span class="icon-label">{{ name }}</span>
+            <span v-if="copiedIcon === name" class="copied-badge">✓</span>
+          </button>
+        </div>
+
+        <div v-if="!filteredIcons.length" class="empty">
+          <IsIcon name="search-status" variant="bulk" :size="32" color="currentColor" />
+          <p>Aucun résultat pour "{{ searchQuery }}"</p>
+        </div>
+      </main>
+    </div>
   </div>
 </template>
 
 <style>
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+
+:root {
+  --bg: #09090b;
+  --surface: #18181b;
+  --surface-2: #27272a;
+  --border: #3f3f46;
+  --text: #fafafa;
+  --text-2: #a1a1aa;
+  --text-3: #71717a;
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.15);
+  --green: #22c55e;
+  --radius: 8px;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 3rem;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-header p {
-  color: #94a3b8;
-}
-
-section {
-  background: #1e293b;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-h2 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: #f1f5f9;
-}
-
-.code {
-  background: #0f172a;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-family: 'Fira Code', monospace;
-  font-size: 0.875rem;
-  color: #a5b4fc;
-  margin-bottom: 1rem;
-}
-
-.icons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
-}
-
-.icon-card {
+.layout {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: #0f172a;
-  border-radius: 8px;
-  transition: transform 0.2s;
 }
 
-.icon-card:hover {
-  transform: scale(1.05);
-}
-
-.icon-card span {
-  font-size: 0.75rem;
-  color: #94a3b8;
-}
-
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.control {
+/* Topbar */
+.topbar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 24px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.control label {
-  color: #94a3b8;
-  min-width: 80px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
 }
 
-.control select,
-.control input[type="range"] {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #e2e8f0;
+.search-wrapper {
+  flex: 1;
+  max-width: 480px;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.control input[type="color"] {
-  width: 40px;
-  height: 32px;
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-3);
+  pointer-events: none;
+}
+
+.search {
+  width: 100%;
+  padding: 10px 12px 10px 38px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.search::placeholder {
+  color: var(--text-3);
+}
+
+.search-wrapper kbd {
+  position: absolute;
+  right: 10px;
+  padding: 2px 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: var(--radius);
+  transition:
+    color 0.15s,
+    background 0.15s;
+}
+
+.github-link:hover {
+  color: var(--text);
+  background: var(--surface);
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  padding: 20px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 57px;
+  height: calc(100vh - 57px);
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+
+.variant-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.variant-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: transparent;
   border: none;
   border-radius: 6px;
+  color: var(--text-2);
+  font-size: 13px;
+  font-family: inherit;
   cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
 }
 
-.dynamic-demo {
+.variant-chip:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.variant-chip.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.size-picker {
+  display: flex;
+  gap: 6px;
+}
+
+.size-btn {
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-2);
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.size-btn:hover {
+  border-color: var(--text-3);
+  color: var(--text);
+}
+
+.size-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.color-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.color-btn {
+  width: 28px;
+  height: 28px;
+  padding: 3px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.color-btn:hover {
+  border-color: var(--text-3);
+}
+
+.color-btn.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.color-swatch {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--color);
+}
+
+.preview-section {
+  padding: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.preview-section h3 {
+  margin-bottom: 12px;
+}
+
+.preview-card {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 12px;
+  color: var(--text);
 }
 
-.icon-selector select {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #e2e8f0;
-  font-size: 1rem;
-}
-
-.icon-preview {
+.preview-info {
   display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.preview-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.preview-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.install-section {
+  margin-top: auto;
+}
+
+.code-box {
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.code-box code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+/* Main */
+.main {
+  flex: 1;
+  padding: 20px 24px;
+  min-width: 0;
+}
+
+.grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.count {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 8px;
+}
+
+.icon-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px 12px;
+  background: var(--surface);
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.icon-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.icon-btn.copied {
+  background: rgba(34, 197, 94, 0.1);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.icon-label {
+  font-size: 10px;
+  color: var(--text-3);
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-btn:hover .icon-label {
+  color: var(--text-2);
+}
+
+.copied-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 10px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 120px;
-  background: #0f172a;
-  border-radius: 12px;
+  padding: 60px 20px;
+  color: var(--text-3);
+  gap: 12px;
 }
 
-.variants-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
+.empty p {
+  font-size: 14px;
 }
 
-.variant-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: #0f172a;
-  border-radius: 8px;
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
-
-.variant-card span {
-  font-size: 0.7rem;
-  color: #94a3b8;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-
-.demo-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  max-width: 200px;
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 4px;
 }
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: #0f172a;
-  border-radius: 8px;
-  color: #e2e8f0;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.menu-item:hover {
-  background: #334155;
-}
-
-.types-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.type-box {
-  background: #0f172a;
-  padding: 1rem;
-  border-radius: 8px;
-}
-
-.type-box h4 {
-  color: #a5b4fc;
-  margin-bottom: 0.5rem;
-}
-
-.type-box code {
-  font-size: 0.75rem;
-  color: #94a3b8;
-  word-break: break-all;
-}
-
-footer {
-  text-align: center;
-  margin-top: 3rem;
-  color: #64748b;
-}
-
-footer p {
-  margin: 0.5rem 0;
-}
-
-@media (max-width: 600px) {
-  .variants-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .types-info {
-    grid-template-columns: 1fr;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border);
 }
 </style>

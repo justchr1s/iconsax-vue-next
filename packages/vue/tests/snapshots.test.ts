@@ -8,7 +8,7 @@ describe('Icon Snapshots', () => {
     { name: 'IsSetting', component: IsSetting },
     { name: 'IsHeart', component: IsHeart },
     { name: 'IsUser', component: IsUser },
-    { name: 'IsSearchNormal', component: IsSearchNormal }
+    { name: 'IsSearchNormal', component: IsSearchNormal },
   ]
 
   const variants = ['linear', 'bold', 'outline', 'bulk', 'broken', 'twotone'] as const
@@ -18,9 +18,9 @@ describe('Icon Snapshots', () => {
       variants.forEach(variant => {
         it(`${variant} variant matches snapshot`, () => {
           const wrapper = mount(component, {
-            props: { variant }
+            props: { variant },
           })
-          
+
           expect(wrapper.html()).toMatchSnapshot()
         })
       })
@@ -34,10 +34,10 @@ describe('Icon with Custom Props Snapshots', () => {
       props: {
         size: 48,
         color: '#6366f1',
-        variant: 'bold'
-      }
+        variant: 'bold',
+      },
     })
-    
+
     expect(wrapper.html()).toMatchSnapshot()
   })
 
@@ -45,10 +45,10 @@ describe('Icon with Custom Props Snapshots', () => {
     const wrapper = mount(IsSetting, {
       props: {
         size: '2rem',
-        color: 'red'
-      }
+        color: 'red',
+      },
     })
-    
+
     expect(wrapper.html()).toMatchSnapshot()
   })
 })

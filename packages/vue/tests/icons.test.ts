@@ -7,7 +7,7 @@ describe('Icon Components', () => {
     it('renders correctly with default props', () => {
       const wrapper = mount(IsHome)
       const svg = wrapper.find('svg')
-      
+
       expect(svg.exists()).toBe(true)
       expect(svg.attributes('xmlns')).toBe('http://www.w3.org/2000/svg')
       expect(svg.attributes('width')).toBe('24px')
@@ -16,87 +16,89 @@ describe('Icon Components', () => {
 
     it('applies custom size as number', () => {
       const wrapper = mount(IsHome, {
-        props: { size: 32 }
+        props: { size: 32 },
       })
       const svg = wrapper.find('svg')
-      
+
       expect(svg.attributes('width')).toBe('32px')
       expect(svg.attributes('height')).toBe('32px')
     })
 
     it('applies custom size as string', () => {
       const wrapper = mount(IsHome, {
-        props: { size: '2rem' }
+        props: { size: '2rem' },
       })
       const svg = wrapper.find('svg')
-      
+
       expect(svg.attributes('width')).toBe('2rem')
       expect(svg.attributes('height')).toBe('2rem')
     })
 
     it('applies custom color', () => {
       const wrapper = mount(IsHome, {
-        props: { color: '#ff0000' }
+        props: { color: '#ff0000' },
       })
       const svg = wrapper.find('svg')
-      
-      // Linear variant uses stroke
-      expect(svg.attributes('stroke')).toBe('#ff0000')
+
+      // Color is applied via CSS style property
+      expect(svg.attributes('style')).toContain('color: #ff0000')
     })
 
     it('renders bold variant correctly', () => {
       const wrapper = mount(IsHome, {
-        props: { variant: 'bold' }
+        props: { variant: 'bold' },
       })
       const svg = wrapper.find('svg')
-      
+
       // Bold variant uses fill
       expect(svg.attributes('fill')).toBe('currentColor')
     })
 
     it('renders linear variant correctly', () => {
       const wrapper = mount(IsHome, {
-        props: { variant: 'linear' }
+        props: { variant: 'linear' },
       })
       const svg = wrapper.find('svg')
-      
+
       expect(svg.attributes('stroke')).toBe('currentColor')
       expect(svg.attributes('fill')).toBe('none')
     })
 
     it('renders outline variant correctly', () => {
       const wrapper = mount(IsHome, {
-        props: { variant: 'outline' }
+        props: { variant: 'outline' },
       })
       const svg = wrapper.find('svg')
-      
-      expect(svg.attributes('stroke')).toBe('currentColor')
+
+      // Outline variant uses fill (it's a filled shape, not stroked)
+      expect(svg.attributes('fill')).toBe('currentColor')
+      expect(svg.attributes('stroke')).toBe('none')
     })
 
     it('renders bulk variant correctly', () => {
       const wrapper = mount(IsHome, {
-        props: { variant: 'bulk' }
+        props: { variant: 'bulk' },
       })
       const svg = wrapper.find('svg')
-      
+
       expect(svg.attributes('fill')).toBe('currentColor')
     })
 
     it('renders broken variant correctly', () => {
       const wrapper = mount(IsHome, {
-        props: { variant: 'broken' }
+        props: { variant: 'broken' },
       })
       const svg = wrapper.find('svg')
-      
+
       expect(svg.attributes('stroke')).toBe('currentColor')
     })
 
     it('renders twotone variant correctly', () => {
       const wrapper = mount(IsHome, {
-        props: { variant: 'twotone' }
+        props: { variant: 'twotone' },
       })
       const svg = wrapper.find('svg')
-      
+
       expect(svg.attributes('stroke')).toBe('currentColor')
     })
   })
@@ -109,10 +111,10 @@ describe('Icon Components', () => {
 
     it('applies all variants', () => {
       const variants = ['linear', 'bold', 'outline', 'bulk', 'broken', 'twotone'] as const
-      
+
       variants.forEach(variant => {
         const wrapper = mount(IsSetting, {
-          props: { variant }
+          props: { variant },
         })
         expect(wrapper.find('svg').exists()).toBe(true)
       })
@@ -147,27 +149,29 @@ describe('Icon Component Props', () => {
       props: {
         size: 48,
         color: '#6366f1',
-        variant: 'bold'
-      }
+        variant: 'bold',
+      },
     })
     const svg = wrapper.find('svg')
-    
+
     expect(svg.attributes('width')).toBe('48px')
     expect(svg.attributes('height')).toBe('48px')
-    expect(svg.attributes('fill')).toBe('#6366f1')
+    expect(svg.attributes('fill')).toBe('currentColor')
+    // Color is applied via CSS style property
+    expect(svg.attributes('style')).toContain('color')
   })
 
   it('uses currentColor as default color', () => {
     const wrapper = mount(IsHome)
     const svg = wrapper.find('svg')
-    
+
     expect(svg.attributes('stroke')).toBe('currentColor')
   })
 
   it('uses linear as default variant', () => {
     const wrapper = mount(IsHome)
     const svg = wrapper.find('svg')
-    
+
     // Linear variant has stroke and no fill
     expect(svg.attributes('fill')).toBe('none')
     expect(svg.attributes('stroke')).toBe('currentColor')

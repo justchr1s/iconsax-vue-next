@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   variant: 'linear'
 })
 
-const svgSize = computed(() => 
+const svgSize = computed(() =>
   typeof props.size === 'number' ? `${props.size}px` : props.size
 )
 
@@ -19,7 +19,8 @@ const svgData = {
     content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.29 9H19c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h3v3c0 1.66-1.34 3-3 3h-1c0-1.1-.9-2-2-2s-2 .9-2 2h-4c0-1.1-.9-2-2-2s-2 .9-2 2H5c-1.06 0-1.99-.55-2.52-1.37"/>
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 14h11c1.1 0 2-.9 2-2V5h1.84c.36 0 .71.1 1.01.27"/>
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 2v10c0 1.1-.9 2-2 2H2V7.62c.73.87 1.85 1.41 3.09 1.38 1.01-.02 1.92-.41 2.6-1.06.31-.26.57-.59.77-.95.36-.61.56-1.33.54-2.08-.03-1.17-.55-2.2-1.36-2.91H15zM8 22a2 2 0 100-4 2 2 0 000 4zM16 22a2 2 0 100-4 2 2 0 000 4zM22 12v2h-3c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1.29L22 12z"/>
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M9 5c0 .75-.21 1.46-.58 2.06-.21.36-.48.68-.79.94-.7.63-1.62 1-2.63 1a3.97 3.97 0 01-3.42-1.94A3.92 3.92 0 011 5c0-1.26.58-2.39 1.5-3.12A3.999 3.999 0 019 5zM6.069 6.04l-2.11-2.11M6.04 3.96L3.93 6.07"/>`
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M9 5c0 .75-.21 1.46-.58 2.06-.21.36-.48.68-.79.94-.7.63-1.62 1-2.63 1a3.97 3.97 0 01-3.42-1.94A3.92 3.92 0 011 5c0-1.26.58-2.39 1.5-3.12A3.999 3.999 0 019 5zM6.069 6.04l-2.11-2.11M6.04 3.96L3.93 6.07"/>`,
+    isStroke: true
   },
   bulk: null,
   linear: null,
@@ -32,7 +33,8 @@ const svgData = {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12h7" opacity=".4"/>
   <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M3 16.5h5.34c.64 0 1.16.52 1.16 1.16v1.28"/>
   <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M4.22 15.28L3 16.5l1.22 1.22M9.5 21.78H4.16c-.64 0-1.16-.52-1.16-1.16v-1.28"/>
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M8.28 23l1.22-1.22-1.22-1.22"/>`
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M8.28 23l1.22-1.22-1.22-1.22"/>`,
+    isStroke: true
   }
 }
 
@@ -45,8 +47,9 @@ const currentVariant = computed(() => svgData[props.variant] || svgData.broken)
     :viewBox="currentVariant?.viewBox"
     :width="svgSize"
     :height="svgSize"
-    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
-    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    :fill="currentVariant?.isStroke ? 'none' : 'currentColor'"
+    :stroke="currentVariant?.isStroke ? 'currentColor' : 'none'"
+    :style="{ color }"
     v-html="currentVariant?.content"
   />
 </template>

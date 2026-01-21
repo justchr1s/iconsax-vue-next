@@ -1,0 +1,208 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Icon Snapshots > IsHeart > bold variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M16.44 3.102c-1.81 0-3.43.88-4.44 2.23a5.549 5.549 0 00-4.44-2.23c-3.07 0-5.56 2.5-5.56 5.59 0 1.19.19 2.29.52 3.31 1.58 5 6.45 7.99 8.86 8.81.34.12.9.12 1.24 0 2.41-.82 7.28-3.81 8.86-8.81.33-1.02.52-2.12.52-3.31 0-3.09-2.49-5.59-5.56-5.59z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHeart > broken variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.59 4.97c.88.99 1.41 2.29 1.41 3.72 0 7-6.48 11.13-9.38 12.13-.34.12-.9.12-1.24 0C8.48 19.82 2 15.69 2 8.69 2 5.6 4.49 3.1 7.56 3.1c1.82 0 3.43.88 4.44 2.24a5.53 5.53 0 014.44-2.24"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHeart > bulk variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M22 8.69c0 1.19-.19 2.29-.52 3.31H2.52C2.19 10.98 2 9.88 2 8.69 2 5.6 4.49 3.1 7.56 3.1c1.81 0 3.43.88 4.44 2.23a5.549 5.549 0 014.44-2.23C19.51 3.1 22 5.6 22 8.69z"></path>
+  <path d="M21.48 12c-1.58 5-6.45 7.99-8.86 8.81-.34.12-.9.12-1.24 0C8.97 19.99 4.1 17 2.52 12h18.96z" opacity=".4"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHeart > linear variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12.62 20.81c-.34.12-.9.12-1.24 0C8.48 19.82 2 15.69 2 8.69 2 5.6 4.49 3.1 7.56 3.1c1.82 0 3.43.88 4.44 2.24a5.53 5.53 0 014.44-2.24C19.51 3.1 22 5.6 22 8.69c0 7-6.48 11.13-9.38 12.12z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHeart > outline variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M12 21.65c-.31 0-.61-.04-.86-.13-3.82-1.31-9.89-5.96-9.89-12.83 0-3.5 2.83-6.34 6.31-6.34 1.69 0 3.27.66 4.44 1.84a6.214 6.214 0 014.44-1.84c3.48 0 6.31 2.85 6.31 6.34 0 6.88-6.07 11.52-9.89 12.83-.25.09-.55.13-.86.13zM7.56 3.85c-2.65 0-4.81 2.17-4.81 4.84 0 6.83 6.57 10.63 8.88 11.42.18.06.57.06.75 0 2.3-.79 8.88-4.58 8.88-11.42 0-2.67-2.16-4.84-4.81-4.84-1.52 0-2.93.71-3.84 1.94-.28.38-.92.38-1.2 0a4.77 4.77 0 00-3.85-1.94z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHeart > twotone variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12.62 20.81c-.34.12-.9.12-1.24 0C8.48 19.82 2 15.69 2 8.69 2 5.6 4.49 3.1 7.56 3.1c1.82 0 3.43.88 4.44 2.24a5.53 5.53 0 014.44-2.24C19.51 3.1 22 5.6 22 8.69c0 7-6.48 11.13-9.38 12.12z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHome > bold variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M20.86 8.37l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01L3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l1.33 7.96c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91zM12 15.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHome > broken variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.36 19.24c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01L3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l.68 4.09"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10.5a2.5 2.5 0 000 5 2.5 2.5 0 002.5-2.5"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHome > bulk variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M10.07 2.82L3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l1.33 7.96c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01z" opacity=".4"></path>
+  <path d="M12 15.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHome > linear variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18v-3M10.07 2.82L3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l1.33 7.96c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHome > outline variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M12 18.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75z"></path>
+  <path d="M17.6 22.56H6.4c-1.82 0-3.48-1.4-3.78-3.19L1.29 11.4c-.22-1.24.39-2.83 1.38-3.62L9.6 2.23c1.34-1.08 3.45-1.07 4.8.01l6.93 5.54c.98.79 1.58 2.38 1.38 3.62l-1.33 7.96c-.3 1.77-2 3.2-3.78 3.2zM11.99 2.93c-.53 0-1.06.16-1.45.47L3.61 8.96c-.56.45-.96 1.49-.84 2.2l1.33 7.96c.18 1.05 1.23 1.94 2.3 1.94h11.2c1.07 0 2.12-.89 2.3-1.95l1.33-7.96c.11-.7-.29-1.76-.84-2.2l-6.93-5.54c-.4-.32-.94-.48-1.47-.48z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsHome > twotone variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.07 2.82L3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l1.33 7.96c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" opacity=".4"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSearchNormal > bold variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M11.01 20.02a9.01 9.01 0 100-18.02 9.01 9.01 0 000 18.02zM21.99 18.95c-.33-.61-1.03-.95-1.97-.95-.71 0-1.32.29-1.68.79-.36.5-.44 1.17-.22 1.84.43 1.3 1.18 1.59 1.59 1.64.06.01.12.01.19.01.44 0 1.12-.19 1.78-1.18.53-.77.63-1.54.31-2.15z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSearchNormal > broken variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 2a9 9 0 11-4.07.97M19.071 20.97c.53 1.6 1.74 1.76 2.67.36.86-1.28.3-2.33-1.24-2.33-1.15 0-1.79.89-1.43 1.97z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSearchNormal > bulk variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M11.01 20.02a9.01 9.01 0 100-18.02 9.01 9.01 0 000 18.02z" opacity=".4"></path>
+  <path d="M21.99 18.95c-.33-.61-1.03-.95-1.97-.95-.71 0-1.32.29-1.68.79-.36.5-.44 1.17-.22 1.84.43 1.3 1.18 1.59 1.59 1.64.06.01.12.01.19.01.44 0 1.12-.19 1.78-1.18.53-.77.63-1.54.31-2.15z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSearchNormal > linear variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 20a9 9 0 100-18 9 9 0 000 18zM18.93 20.69c.53 1.6 1.74 1.76 2.67.36.85-1.28.29-2.33-1.25-2.33-1.14-.01-1.78.88-1.42 1.97z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSearchNormal > outline variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M11 20.75c-5.38 0-9.75-4.37-9.75-9.75S5.62 1.25 11 1.25s9.75 4.37 9.75 9.75-4.37 9.75-9.75 9.75zm0-18c-4.55 0-8.25 3.7-8.25 8.25s3.7 8.25 8.25 8.25 8.25-3.7 8.25-8.25-3.7-8.25-8.25-8.25zM20.16 22.79c-.08 0-.16-.01-.23-.02-.47-.06-1.32-.38-1.8-1.81-.25-.75-.16-1.5.25-2.07.41-.57 1.1-.89 1.89-.89 1.02 0 1.82.39 2.18 1.08.36.69.26 1.57-.31 2.42-.71 1.07-1.48 1.29-1.98 1.29zm-.6-2.3c.17.52.41.78.57.8.16.02.46-.17.77-.62.29-.43.31-.74.24-.88s-.35-.29-.87-.29c-.31 0-.54.1-.67.27-.12.17-.14.43-.04.72z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSearchNormal > twotone variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 20a9 9 0 100-18 9 9 0 000 18z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.93 20.69c.53 1.6 1.74 1.76 2.67.36.85-1.28.29-2.33-1.25-2.33-1.14-.01-1.78.88-1.42 1.97z" opacity=".4"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSetting > bold variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M18.94 5.421l-5.17-2.99c-.99-.57-2.54-.57-3.53 0l-5.22 3.01c-2.07 1.4-2.19 1.61-2.19 3.84v5.43c0 2.23.12 2.45 2.23 3.87l5.17 2.99c.5.29 1.14.43 1.77.43.63 0 1.27-.14 1.76-.43l5.22-3.01c2.07-1.4 2.19-1.61 2.19-3.84v-5.44c0-2.23-.12-2.44-2.23-3.86zM12 15.251c-1.79 0-3.25-1.46-3.25-3.25s1.46-3.25 3.25-3.25 3.25 1.46 3.25 3.25-1.46 3.25-3.25 3.25z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSetting > broken variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.08v1.8C3 17 3 17 5 18.35l5.5 3.18c.83.48 2.18.48 3 0l5.5-3.18c2-1.35 2-1.35 2-3.46V9.11C21 7 21 7 19 5.65l-5.5-3.18c-.82-.48-2.17-.48-3 0L5 5.65C3 7 3 7 3 9.11"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M15 12c0-1.66-1.34-3-3-3s-3 1.34-3 3a2.996 2.996 0 004.17 2.76"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSetting > bulk variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M18.94 5.42l-5.17-2.99c-.99-.57-2.54-.57-3.53 0L5.02 5.44c-2.07 1.4-2.19 1.61-2.19 3.84v5.43c0 2.23.12 2.45 2.23 3.87l5.17 2.99c.5.29 1.14.43 1.77.43.63 0 1.27-.14 1.76-.43l5.22-3.01c2.07-1.4 2.19-1.61 2.19-3.84V9.28c0-2.23-.12-2.44-2.23-3.86z" opacity=".4"></path>
+  <path d="M12 15.25a3.25 3.25 0 100-6.5 3.25 3.25 0 000 6.5z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSetting > linear variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9.11v5.77C3 17 3 17 5 18.35l5.5 3.18c.83.48 2.18.48 3 0l5.5-3.18c2-1.35 2-1.35 2-3.46V9.11C21 7 21 7 19 5.65l-5.5-3.18c-.82-.48-2.17-.48-3 0L5 5.65C3 7 3 7 3 9.11z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSetting > outline variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M12 22.63c-.67 0-1.35-.15-1.88-.46L4.62 19c-2.24-1.51-2.38-1.74-2.38-4.11V9.11c0-2.37.13-2.6 2.33-4.09l5.54-3.2c1.05-.61 2.7-.61 3.75 0L19.38 5c2.24 1.51 2.38 1.74 2.38 4.11v5.77c0 2.37-.13 2.6-2.33 4.09l-5.54 3.2c-.54.31-1.22.46-1.89.46zm0-19.76c-.42 0-.83.08-1.12.25L5.38 6.3C3.75 7.4 3.75 7.4 3.75 9.11v5.77c0 1.71 0 1.71 1.67 2.84l5.46 3.15c.59.34 1.66.34 2.25 0l5.5-3.18c1.62-1.1 1.62-1.1 1.62-2.81V9.11c0-1.71 0-1.71-1.67-2.84l-5.46-3.15c-.29-.17-.7-.25-1.12-.25z"></path>
+  <path d="M12 15.75c-2.07 0-3.75-1.68-3.75-3.75 0-2.07 1.68-3.75 3.75-3.75 2.07 0 3.75 1.68 3.75 3.75 0 2.07-1.68 3.75-3.75 3.75zm0-6c-1.24 0-2.25 1.01-2.25 2.25s1.01 2.25 2.25 2.25 2.25-1.01 2.25-2.25S13.24 9.75 12 9.75z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsSetting > twotone variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9.11v5.77C3 17 3 17 5 18.35l5.5 3.18c.83.48 2.18.48 3 0l5.5-3.18c2-1.35 2-1.35 2-3.46V9.11C21 7 21 7 19 5.65l-5.5-3.18c-.82-.48-2.17-.48-3 0L5 5.65C3 7 3 7 3 9.11z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z" opacity=".34"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsUser > bold variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M12 12a5 5 0 100-10 5 5 0 000 10zM12 14.5c-5.01 0-9.09 3.36-9.09 7.5 0 .28.22.5.5.5h17.18c.28 0 .5-.22.5-.5 0-4.14-4.08-7.5-9.09-7.5z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsUser > broken variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.02 3.01A4.944 4.944 0 0012 2C9.24 2 7 4.24 7 7s2.24 5 5 5 5-2.24 5-5M20.59 22c0-3.87-3.85-7-8.59-7s-8.59 3.13-8.59 7"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsUser > bulk variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M12 12a5 5 0 100-10 5 5 0 000 10z" opacity=".4"></path>
+  <path d="M12 14.5c-5.01 0-9.09 3.36-9.09 7.5 0 .28.22.5.5.5h17.18c.28 0 .5-.22.5-.5 0-4.14-4.08-7.5-9.09-7.5z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsUser > linear variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 12a5 5 0 100-10 5 5 0 000 10zM20.59 22c0-3.87-3.85-7-8.59-7s-8.59 3.13-8.59 7"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsUser > outline variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="currentColor" stroke="none" style="color: currentcolor;">
+  <path d="M12 12.75c-3.17 0-5.75-2.58-5.75-5.75S8.83 1.25 12 1.25 17.75 3.83 17.75 7s-2.58 5.75-5.75 5.75zm0-10A4.26 4.26 0 007.75 7 4.26 4.26 0 0012 11.25 4.26 4.26 0 0016.25 7 4.26 4.26 0 0012 2.75zM20.59 22.75c-.41 0-.75-.34-.75-.75 0-3.45-3.52-6.25-7.84-6.25S4.16 18.55 4.16 22c0 .41-.34.75-.75.75s-.75-.34-.75-.75c0-4.27 4.19-7.75 9.34-7.75 5.15 0 9.34 3.48 9.34 7.75 0 .41-.34.75-.75.75z"></path>
+</svg>"
+`;
+
+exports[`Icon Snapshots > IsUser > twotone variant matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px" fill="none" stroke="currentColor" style="color: currentcolor;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 12a5 5 0 100-10 5 5 0 000 10z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.59 22c0-3.87-3.85-7-8.59-7s-8.59 3.13-8.59 7" opacity=".4"></path>
+</svg>"
+`;
+
+exports[`Icon with Custom Props Snapshots > IsHome with custom size and color matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48px" height="48px" fill="currentColor" stroke="none" style="color: #6366f1;">
+  <path d="M20.86 8.37l-6.93-5.54c-1.07-.86-2.8-.86-3.86-.01L3.14 8.37c-.78.62-1.28 1.93-1.11 2.91l1.33 7.96c.24 1.42 1.6 2.57 3.04 2.57h11.2c1.43 0 2.8-1.16 3.04-2.57l1.33-7.96c.16-.98-.34-2.29-1.11-2.91zM12 15.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"></path>
+</svg>"
+`;
+
+exports[`Icon with Custom Props Snapshots > IsSetting with string size matches snapshot 1`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="2rem" height="2rem" fill="none" stroke="currentColor" style="color: red;">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9.11v5.77C3 17 3 17 5 18.35l5.5 3.18c.83.48 2.18.48 3 0l5.5-3.18c2-1.35 2-1.35 2-3.46V9.11C21 7 21 7 19 5.65l-5.5-3.18c-.82-.48-2.17-.48-3 0L5 5.65C3 7 3 7 3 9.11z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z"></path>
+</svg>"
+`;

@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+**/dist/
+.nuxt/
+**/.nuxt/
+.output/
+
+# Generated files
+packages/vue/src/components/
+packages/vue/src/types.ts
+packages/vue/src/index.ts
+packages/iconify/src/
+icons/
+
+# Lock files
+pnpm-lock.yaml
+
+# Cache
+.cache/
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# Coverage
+coverage/

@@ -6,7 +6,7 @@ Ce guide explique comment tester le package `@ratoufa/iconsax-vue` en local.
 
 ## 📋 Prérequis
 
-- **Node.js** 18+ 
+- **Node.js** 18+
 - **pnpm** 8+ (recommandé) ou npm/yarn
 
 ```bash
@@ -50,6 +50,7 @@ pnpm dev
 ```
 
 Ouvre **http://localhost:5173** dans ton navigateur. Tu verras :
+
 - ✅ Les 5 icônes d'exemple (home, setting, heart, user, search-normal)
 - ✅ Contrôles pour changer variant, size, color
 - ✅ Test du composant dynamique `IsIcon`
@@ -164,14 +165,14 @@ pnpm add /chemin/absolu/vers/iconsax-vue-next/packages/vue
 
 Après avoir lancé le playground, vérifie que :
 
-| Test | Attendu |
-|------|---------|
-| Icônes s'affichent | ✅ 5 icônes visibles |
-| Changer de variant | ✅ L'apparence change |
-| Changer la taille | ✅ Les icônes grandissent/rétrécissent |
-| Changer la couleur | ✅ La couleur change |
-| IsIcon dynamique | ✅ Fonctionne avec le sélecteur |
-| Pas d'erreurs console | ✅ Console propre |
+| Test                  | Attendu                                |
+| --------------------- | -------------------------------------- |
+| Icônes s'affichent    | ✅ 5 icônes visibles                   |
+| Changer de variant    | ✅ L'apparence change                  |
+| Changer la taille     | ✅ Les icônes grandissent/rétrécissent |
+| Changer la couleur    | ✅ La couleur change                   |
+| IsIcon dynamique      | ✅ Fonctionne avec le sélecteur        |
+| Pas d'erreurs console | ✅ Console propre                      |
 
 ---
 
@@ -232,6 +233,7 @@ iconsax-vue-next/
 Si tu vois les icônes dans le playground, le package fonctionne correctement !
 
 Tu peux maintenant :
+
 1. **Ajouter toutes les icônes** avec `pnpm fetch:icons && pnpm generate`
 2. **Publier sur npm** avec `npm publish` dans chaque package
 3. **Utiliser dans tes projets** Ratoufa ! 🐿️

@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/iconsax-vue-next"
+    "url": "https://github.com/ratoufa/iconsax-vue-next"
   },
   "scripts": {
     "fetch:icons": "tsx scripts/fetch-icons.ts",
@@ -21,6 +21,8 @@
     "test:watch": "pnpm --filter @ratoufa/iconsax-vue test",
     "test:coverage": "pnpm --filter @ratoufa/iconsax-vue test:coverage",
     "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "typecheck": "pnpm -r typecheck",
     "clean": "rimraf packages/*/dist icons/*/*.svg"
   },

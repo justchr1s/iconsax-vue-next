@@ -53,13 +53,13 @@ interface IconifyJSON {
 function extractSvgBody(svgContent: string): string {
   // Remove XML declaration if present
   let content = svgContent.replace(/<\?xml[^>]*\?>/g, '').trim()
-  
+
   // Extract content between <svg> tags
   const match = content.match(/<svg[^>]*>([\s\S]*)<\/svg>/i)
   if (match) {
     return match[1].trim()
   }
-  
+
   return content
 }
 
@@ -90,23 +90,23 @@ async function main() {
     }
 
     const files = readdirSync(variantDir).filter(f => f.endsWith('.svg'))
-    
+
     for (const file of files) {
       const rawName = basename(file, '.svg')
       const iconName = sanitizeName(rawName)
       iconNames.add(iconName)
-      
+
       const svgContent = readFileSync(join(variantDir, file), 'utf-8')
       const body = extractSvgBody(svgContent)
       const { width, height } = getViewBox(svgContent)
-      
+
       // Icon name format: iconname-variant (e.g., home-bold, setting-linear)
       const fullName = `${iconName}-${variant}`
-      
+
       icons[fullName] = {
         body,
         ...(width !== 24 && { width }),
-        ...(height !== 24 && { height })
+        ...(height !== 24 && { height }),
       }
     }
   }
@@ -119,19 +119,19 @@ async function main() {
       total: Object.keys(icons).length,
       author: {
         name: 'Vuesax',
-        url: 'https://iconsax.io'
+        url: 'https://iconsax.io',
       },
       license: {
         title: 'MIT',
-        spdx: 'MIT'
+        spdx: 'MIT',
       },
       samples: ['home-bold', 'setting-linear', 'user-outline'],
       palette: false,
-      category: 'General'
+      category: 'General',
     },
     icons,
     width: 24,
-    height: 24
+    height: 24,
   }
 
   // Write icons.json
@@ -141,7 +141,7 @@ async function main() {
   // Generate TypeScript types
   const iconNamesArray = Array.from(iconNames).sort()
   const allIconNames: string[] = []
-  
+
   for (const name of iconNamesArray) {
     for (const variant of VARIANTS) {
       allIconNames.push(`${name}-${variant}`)

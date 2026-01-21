@@ -1,102 +1,309 @@
-# Iconsax Vue Next
+# Iconsax Vue
 
-> Modern Iconsax icon library for Vue 3 & Nuxt 3 with full TypeScript support
+Iconsax icon library for Vue 3 & Nuxt 3 with full TypeScript support.
 
-![iconsax-vue-next](https://img.shields.io/badge/icons-1000+-blue)
-![Vue 3](https://img.shields.io/badge/Vue-3.x-brightgreen)
-![Nuxt 3](https://img.shields.io/badge/Nuxt-3.x-00DC82)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
+**942 icons** available in **6 styles**: bold, broken, bulk, linear, outline, twotone.
 
-## Features
+## Table of Contents
 
-- 🎨 **1000+ Icons** - Complete Iconsax collection in 6 styles
-- 🔷 **Full TypeScript** - Autocomplete for all icon names and props
-- 🌳 **Tree-shakable** - Only bundle the icons you use
-- ⚡ **Dynamic Loading** - Load icons by name at runtime
-- 🧩 **Nuxt Module** - Auto-imports for Nuxt 3
-- 📦 **Lightweight** - Optimized for minimal bundle size
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Static Import](#static-import)
+  - [Dynamic Import](#dynamic-import)
+- [API Reference](#api-reference)
+  - [Props](#props)
+  - [Variants](#variants)
+  - [TypeScript Types](#typescript-types)
+  - [Exports](#exports)
+- [Nuxt 3](#nuxt-3)
+- [Iconify Format](#iconify-format)
+- [Examples](#examples)
+- [Development](#development)
+- [License](#license)
 
-## Packages
-
-| Package | Version | Description |
-|---------|---------|-------------|
-| [@ratoufa/iconsax-vue](./packages/vue) | ![npm](https://img.shields.io/npm/v/@ratoufa/iconsax-vue) | Vue 3 components |
-| [@ratoufa/iconsax-nuxt](./packages/nuxt) | ![npm](https://img.shields.io/npm/v/@ratoufa/iconsax-nuxt) | Nuxt 3 module |
-| [@iconify-json/iconsax](./packages/iconify) | ![npm](https://img.shields.io/npm/v/@iconify-json/iconsax) | Iconify format (Nuxt Icon, UnoCSS) |
-
-## Quick Start
-
-### Vue 3
+## Installation
 
 ```bash
+# npm
 npm install @ratoufa/iconsax-vue
+
+# pnpm
+pnpm add @ratoufa/iconsax-vue
+
+# yarn
+yarn add @ratoufa/iconsax-vue
 ```
+
+## Usage
+
+### Static Import
+
+Static imports are **tree-shakable** - only the icons you use are included in your bundle.
 
 ```vue
 <script setup lang="ts">
-import { IsHome, IsSetting, IsIcon } from '@ratoufa/iconsax-vue'
+import { IsHome, IsSetting, IsUser, IsHeart } from '@ratoufa/iconsax-vue'
 </script>
 
 <template>
-  <!-- Static import (tree-shakable) -->
-  <IsHome variant="bold" size="24" color="#6366f1" />
-  
-  <!-- Dynamic import -->
-  <IsIcon name="setting" variant="linear" />
+  <IsHome />
+  <IsSetting variant="bold" />
+  <IsUser variant="twotone" :size="32" />
+  <IsHeart variant="bulk" color="#ef4444" />
 </template>
 ```
 
-### Nuxt 3
+Each icon is exported as `Is{PascalCaseName}`. For example:
 
-```bash
-npm install @ratoufa/iconsax-nuxt
+- `home` → `IsHome`
+- `arrow-left` → `IsArrowLeft`
+- `search-normal` → `IsSearchNormal`
+
+### Dynamic Import
+
+Use the `IsIcon` component to load icons by name at runtime. This is useful when the icon name comes from a variable or API.
+
+```vue
+<script setup lang="ts">
+import { IsIcon } from '@ratoufa/iconsax-vue'
+import type { IconName } from '@ratoufa/iconsax-vue'
+
+const currentIcon = ref<IconName>('home')
+</script>
+
+<template>
+  <IsIcon :name="currentIcon" variant="linear" :size="24" />
+</template>
 ```
 
-```ts
+> **Note**: Dynamic imports include all icons in your bundle. Use static imports when possible for smaller bundle sizes.
+
+## API Reference
+
+### Props
+
+All icon components accept the following props:
+
+| Prop      | Type               | Default          | Description                      |
+| --------- | ------------------ | ---------------- | -------------------------------- |
+| `variant` | `IconVariant`      | `'linear'`       | The icon style variant           |
+| `size`    | `number \| string` | `24`             | Icon size in pixels              |
+| `color`   | `string`           | `'currentColor'` | Icon color (any valid CSS color) |
+
+The `IsIcon` component also accepts:
+
+| Prop   | Type       | Required | Description                                    |
+| ------ | ---------- | -------- | ---------------------------------------------- |
+| `name` | `IconName` | Yes      | The icon name (e.g., `'home'`, `'arrow-left'`) |
+
+### Variants
+
+Each icon is available in 6 different styles:
+
+| Variant   | Description                         | Example                      |
+| --------- | ----------------------------------- | ---------------------------- |
+| `linear`  | Clean single-line outline (default) | Minimal, modern look         |
+| `bold`    | Solid filled shape                  | High visual weight           |
+| `outline` | Detailed outline with inner lines   | More detailed than linear    |
+| `bulk`    | Two-tone with fill and opacity      | Depth and dimension          |
+| `broken`  | Dashed/broken line style            | Unique, stylized look        |
+| `twotone` | Two distinct colors                 | Primary and secondary colors |
+
+```vue
+<template>
+  <IsHome variant="linear" />
+  <IsHome variant="bold" />
+  <IsHome variant="outline" />
+  <IsHome variant="bulk" />
+  <IsHome variant="broken" />
+  <IsHome variant="twotone" />
+</template>
+```
+
+### TypeScript Types
+
+The package exports TypeScript types for full type safety:
+
+```typescript
+import type { IconName, IconVariant } from '@ratoufa/iconsax-vue'
+
+// IconName is a union of all 942 icon names
+const icon: IconName = 'home' // ✓ Valid
+const icon: IconName = 'invalid-icon' // ✗ Type error
+
+// IconVariant is the union of all 6 variants
+const variant: IconVariant = 'bold' // ✓ Valid
+const variant: IconVariant = 'invalid' // ✗ Type error
+```
+
+### Exports
+
+The package provides several exports for different use cases:
+
+```typescript
+import {
+  // Static icon components (tree-shakable)
+  IsHome,
+  IsSetting,
+  IsUser,
+  // ... 939 more icons
+
+  // Dynamic icon component
+  IsIcon,
+
+  // Lists for iteration
+  iconNames, // string[] - All 942 icon names
+  iconVariants, // string[] - ['bold', 'broken', 'bulk', 'linear', 'outline', 'twotone']
+
+  // Types
+  type IconName,
+  type IconVariant,
+} from '@ratoufa/iconsax-vue'
+```
+
+## Nuxt 3
+
+For Nuxt 3 projects, use the dedicated module for auto-imports:
+
+```bash
+pnpm add @ratoufa/iconsax-nuxt
+```
+
+```typescript
 // nuxt.config.ts
 export default defineNuxtConfig({
   modules: ['@ratoufa/iconsax-nuxt'],
   iconsax: {
-    prefix: 'Is',  // Component prefix
-    global: false  // Register all icons globally
-  }
+    // Options (all optional)
+    prefix: 'Is', // Component prefix (default: 'Is')
+    global: false, // Register all icons globally (default: false)
+  },
 })
 ```
 
+Then use icons directly in your templates without imports:
+
 ```vue
 <template>
-  <!-- Auto-imported! -->
+  <!-- Auto-imported, no script needed -->
   <IsIcon name="home" variant="bold" />
+  <IsHome variant="linear" />
 </template>
 ```
 
-### Nuxt Icon (Iconify)
+## Iconify Format
+
+For use with [Nuxt Icon](https://github.com/nuxt-modules/icon), [UnoCSS Icons](https://unocss.dev/presets/icons), or other Iconify-compatible tools:
 
 ```bash
-npm install @iconify-json/iconsax
+pnpm add @iconify-json/iconsax
 ```
 
 ```vue
 <template>
-  <!-- Using Nuxt Icon module -->
+  <!-- Nuxt Icon -->
   <Icon name="iconsax:home-bold" />
   <Icon name="iconsax:setting-linear" />
   <Icon name="iconsax:user-twotone" />
 </template>
 ```
 
-## Icon Variants
+Icon names follow the format: `iconsax:{name}-{variant}`
 
-Each icon comes in 6 beautiful styles:
+## Examples
 
-| Variant | Style |
-|---------|-------|
-| `linear` | Clean outline (default) |
-| `bold` | Solid filled |
-| `outline` | Detailed outline |
-| `bulk` | Two-tone with opacity |
-| `broken` | Dashed lines |
-| `twotone` | Two-color style |
+### Basic Usage
+
+```vue
+<script setup lang="ts">
+import { IsHome, IsNotification, IsMessage } from '@ratoufa/iconsax-vue'
+</script>
+
+<template>
+  <nav>
+    <IsHome :size="20" />
+    <IsNotification :size="20" />
+    <IsMessage :size="20" />
+  </nav>
+</template>
+```
+
+### With Reactive Props
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import { IsHeart } from '@ratoufa/iconsax-vue'
+import type { IconVariant } from '@ratoufa/iconsax-vue'
+
+const liked = ref(false)
+const variant = computed<IconVariant>(() => (liked.value ? 'bold' : 'linear'))
+const color = computed(() => (liked.value ? '#ef4444' : 'currentColor'))
+</script>
+
+<template>
+  <button @click="liked = !liked">
+    <IsHeart :variant="variant" :color="color" />
+  </button>
+</template>
+```
+
+### Dynamic Icon Menu
+
+```vue
+<script setup lang="ts">
+import { IsIcon } from '@ratoufa/iconsax-vue'
+import type { IconName } from '@ratoufa/iconsax-vue'
+
+interface MenuItem {
+  icon: IconName
+  label: string
+  href: string
+}
+
+const menu: MenuItem[] = [
+  { icon: 'home', label: 'Home', href: '/' },
+  { icon: 'user', label: 'Profile', href: '/profile' },
+  { icon: 'setting', label: 'Settings', href: '/settings' },
+  { icon: 'logout', label: 'Logout', href: '/logout' },
+]
+</script>
+
+<template>
+  <nav>
+    <a v-for="item in menu" :key="item.href" :href="item.href">
+      <IsIcon :name="item.icon" :size="18" />
+      {{ item.label }}
+    </a>
+  </nav>
+</template>
+```
+
+### Listing All Icons
+
+```vue
+<script setup lang="ts">
+import { IsIcon, iconNames, iconVariants } from '@ratoufa/iconsax-vue'
+import type { IconVariant } from '@ratoufa/iconsax-vue'
+
+const selectedVariant = ref<IconVariant>('linear')
+</script>
+
+<template>
+  <div>
+    <select v-model="selectedVariant">
+      <option v-for="v in iconVariants" :key="v" :value="v">{{ v }}</option>
+    </select>
+
+    <div class="icon-grid">
+      <div v-for="name in iconNames" :key="name">
+        <IsIcon :name="name" :variant="selectedVariant" :size="24" />
+        <span>{{ name }}</span>
+      </div>
+    </div>
+  </div>
+</template>
+```
 
 ## Development
 
@@ -108,92 +315,54 @@ Each icon comes in 6 beautiful styles:
 ### Setup
 
 ```bash
-# Clone the repo
-git clone https://github.com/ratoufa/iconsax-vue-next.git
-cd iconsax-vue-next
+# Clone the repository
+git clone https://github.com/ratoufa/iconsax-vue.git
+cd iconsax-vue
 
 # Install dependencies
 pnpm install
 
-# Fetch icons from source (requires git)
+# Fetch icons from source
 pnpm fetch:icons
 
-# Generate Vue components
+# Generate Vue components from SVGs
 pnpm generate
 
 # Generate Iconify JSON
 pnpm generate:iconify
 
-# Or generate all at once
-pnpm generate:all
-
 # Build all packages
 pnpm build
+
+# Run the playground
+pnpm --filter iconsax-playground dev
 ```
 
 ### Project Structure
 
 ```
-iconsax-vue-next/
+iconsax-vue/
 ├── packages/
-│   ├── vue/          # @ratoufa/iconsax-vue
-│   ├── nuxt/         # @ratoufa/iconsax-nuxt
-│   └── iconify/      # @iconify-json/iconsax
+│   ├── vue/              # @ratoufa/iconsax-vue - Vue 3 components
+│   ├── nuxt/             # @ratoufa/iconsax-nuxt - Nuxt 3 module
+│   └── iconify/          # @iconify-json/iconsax - Iconify format
+├── playground/           # Development playground
 ├── scripts/
-│   ├── fetch-icons.ts        # Download SVGs from source
-│   ├── generate.ts           # Generate Vue components
-│   └── generate-iconify.ts   # Generate Iconify JSON
-├── icons/            # SVG source files (6 variants)
-│   ├── bold/
-│   ├── broken/
-│   ├── bulk/
-│   ├── linear/
-│   ├── outline/
-│   └── twotone/
-└── package.json
+│   ├── fetch-icons.ts    # Download SVGs from source
+│   ├── generate.ts       # Generate Vue components
+│   └── generate-iconify.ts
+└── icons/                # SVG source files
+    ├── bold/
+    ├── broken/
+    ├── bulk/
+    ├── linear/
+    ├── outline/
+    └── twotone/
 ```
-
-## TypeScript
-
-Full type safety with autocompletion:
-
-```typescript
-import type { IconName, IconVariant } from '@ratoufa/iconsax-vue'
-
-// Autocomplete on icon names!
-const icon: IconName = 'home'
-
-// Type-safe variants
-const variant: IconVariant = 'bold'
-```
-
-## Testing
-
-The package includes comprehensive tests using Vitest:
-
-```bash
-# Run all tests
-pnpm test
-
-# Run tests in watch mode
-pnpm test:watch
-
-# Run tests with coverage
-pnpm test:coverage
-```
-
-### Test Coverage
-
-- **Component tests**: Verify icons render correctly with all props
-- **Dynamic icon tests**: Test the `IsIcon` component
-- **Type tests**: Validate TypeScript types
-- **Snapshot tests**: Ensure visual consistency
-- **Export tests**: Verify all exports are available
 
 ## Credits
 
-- Icons by [Iconsax](https://iconsax.io/) / [Vuesax](https://vuesax.com/)
-- Inspired by [vue-iconsax](https://github.com/JaxThePrime/vue-iconsax)
+Icons designed by [Iconsax](https://iconsax.io/) / [Vuesax](https://vuesax.com/)
 
 ## License
 

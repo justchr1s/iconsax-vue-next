@@ -6,29 +6,33 @@
 
 ## 📌 Informations générales
 
-| Champ | Valeur |
-|-------|--------|
-| **Nom du projet** | Iconsax Vue Next |
-| **Auteur** | Chris (Ratoufa) |
-| **Version** | 1.0.0 |
-| **Date de création** | Janvier 2025 |
-| **Licence** | MIT |
-| **Repository** | https://github.com/ratoufa/iconsax-vue-next |
+| Champ                | Valeur                                      |
+| -------------------- | ------------------------------------------- |
+| **Nom du projet**    | Iconsax Vue Next                            |
+| **Auteur**           | Chris (Ratoufa)                             |
+| **Version**          | 1.0.0                                       |
+| **Date de création** | Janvier 2025                                |
+| **Licence**          | MIT                                         |
+| **Repository**       | https://github.com/ratoufa/iconsax-vue-next |
 
 ---
 
 ## 🎯 Vision & Objectifs
 
 ### Vision
+
 Créer la bibliothèque d'icônes Iconsax la plus moderne, performante et developer-friendly pour l'écosystème Vue.js et Nuxt.js, en remplacement des packages existants qui sont abandonnés ou mal conçus.
 
 ### Problème à résoudre
+
 Les packages Iconsax existants pour Vue présentent plusieurs problèmes :
+
 - **`iconsax-vue`** : Abandonné, ne supporte pas Vue 3 Composition API
 - **`vue-iconsax`** : Package lourd (6.96 MB), peu de téléchargements, pas vraiment type-safe
 - **Aucun** ne supporte nativement Nuxt Icon ou le format Iconify
 
 ### Objectifs principaux
+
 1. **Modernité** : Support complet de Vue 3, Nuxt 3, TypeScript 5
 2. **DX (Developer Experience)** : Autocomplétion, type-safety, documentation claire
 3. **Performance** : Tree-shaking, lazy-loading, bundle minimal
@@ -40,12 +44,14 @@ Les packages Iconsax existants pour Vue présentent plusieurs problèmes :
 ## 👥 Personas & Use Cases
 
 ### Persona 1 : Développeur Vue.js
+
 **Nom** : Sarah, Développeuse Frontend  
 **Contexte** : Travaille sur une application Vue 3 avec TypeScript  
 **Besoin** : Ajouter des icônes rapidement avec autocomplétion  
-**Pain point** : Les packages actuels n'ont pas de types corrects  
+**Pain point** : Les packages actuels n'ont pas de types corrects
 
 **Use case** :
+
 ```vue
 <script setup lang="ts">
 import { IsHome, IsSetting } from '@ratoufa/iconsax-vue'
@@ -56,12 +62,14 @@ import { IsHome, IsSetting } from '@ratoufa/iconsax-vue'
 ```
 
 ### Persona 2 : Développeur Nuxt.js
+
 **Nom** : Marc, Développeur Fullstack  
 **Contexte** : Développe des applications Nuxt 3  
 **Besoin** : Auto-import des icônes sans configuration  
-**Pain point** : Doit importer manuellement chaque icône  
+**Pain point** : Doit importer manuellement chaque icône
 
 **Use case** :
+
 ```vue
 <!-- Nuxt auto-import -->
 <template>
@@ -70,12 +78,14 @@ import { IsHome, IsSetting } from '@ratoufa/iconsax-vue'
 ```
 
 ### Persona 3 : Développeur utilisant Nuxt Icon
+
 **Nom** : Julie, Designer/Dev  
 **Contexte** : Utilise Nuxt Icon avec plusieurs sets d'icônes  
 **Besoin** : Intégrer Iconsax dans son workflow existant  
-**Pain point** : Iconsax n'est pas disponible dans Iconify  
+**Pain point** : Iconsax n'est pas disponible dans Iconify
 
 **Use case** :
+
 ```vue
 <template>
   <Icon name="iconsax:home-bold" />
@@ -134,11 +144,11 @@ iconsax-vue-next/
 
 ### Packages publiés
 
-| Package | npm | Description |
-|---------|-----|-------------|
-| `@ratoufa/iconsax-vue` | ![npm](https://img.shields.io/npm/v/@ratoufa/iconsax-vue) | Composants Vue 3 |
-| `@ratoufa/iconsax-nuxt` | ![npm](https://img.shields.io/npm/v/@ratoufa/iconsax-nuxt) | Module Nuxt 3 |
-| `@iconify-json/iconsax` | ![npm](https://img.shields.io/npm/v/@iconify-json/iconsax) | Format Iconify |
+| Package                 | npm                                                        | Description      |
+| ----------------------- | ---------------------------------------------------------- | ---------------- |
+| `@ratoufa/iconsax-vue`  | ![npm](https://img.shields.io/npm/v/@ratoufa/iconsax-vue)  | Composants Vue 3 |
+| `@ratoufa/iconsax-nuxt` | ![npm](https://img.shields.io/npm/v/@ratoufa/iconsax-nuxt) | Module Nuxt 3    |
+| `@iconify-json/iconsax` | ![npm](https://img.shields.io/npm/v/@iconify-json/iconsax) | Format Iconify   |
 
 ---
 
@@ -146,27 +156,30 @@ iconsax-vue-next/
 
 ### 1. Collection d'icônes
 
-| Caractéristique | Valeur |
-|-----------------|--------|
-| **Nombre d'icônes** | 1000+ |
-| **Variants** | 6 (linear, bold, outline, bulk, broken, twotone) |
-| **Total SVGs** | 6000+ |
-| **Format** | SVG optimisé |
-| **ViewBox** | 24x24 |
+| Caractéristique     | Valeur                                           |
+| ------------------- | ------------------------------------------------ |
+| **Nombre d'icônes** | 1000+                                            |
+| **Variants**        | 6 (linear, bold, outline, bulk, broken, twotone) |
+| **Total SVGs**      | 6000+                                            |
+| **Format**          | SVG optimisé                                     |
+| **ViewBox**         | 24x24                                            |
 
 ### 2. Composants Vue
 
 #### 2.1 Import statique (Tree-shakable)
+
 ```typescript
 import { IsHome, IsSetting, IsUser } from '@ratoufa/iconsax-vue'
 ```
 
 **Avantages** :
+
 - ✅ Tree-shaking : seules les icônes importées sont dans le bundle
 - ✅ Autocomplétion sur les noms de composants
 - ✅ Type-checking complet
 
 #### 2.2 Import dynamique
+
 ```typescript
 import { IsIcon } from '@ratoufa/iconsax-vue'
 ```
@@ -176,28 +189,29 @@ import { IsIcon } from '@ratoufa/iconsax-vue'
 ```
 
 **Avantages** :
+
 - ✅ Nom d'icône en string (pour données dynamiques)
 - ✅ Autocomplétion sur la prop `name`
 - ✅ Lazy-loading automatique
 
 ### 3. Props des composants
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `number \| string` | `24` | Taille en pixels ou valeur CSS |
-| `color` | `string` | `'currentColor'` | Couleur de l'icône |
-| `variant` | `IconVariant` | `'linear'` | Style de l'icône |
+| Prop      | Type               | Default          | Description                    |
+| --------- | ------------------ | ---------------- | ------------------------------ |
+| `size`    | `number \| string` | `24`             | Taille en pixels ou valeur CSS |
+| `color`   | `string`           | `'currentColor'` | Couleur de l'icône             |
+| `variant` | `IconVariant`      | `'linear'`       | Style de l'icône               |
 
 ### 4. Variants disponibles
 
-| Variant | Description | Rendu |
-|---------|-------------|-------|
-| `linear` | Outline simple | Stroke uniquement |
-| `bold` | Rempli | Fill solid |
-| `outline` | Outline détaillé | Stroke avec détails |
-| `bulk` | Deux tons | Fill avec opacité |
-| `broken` | Lignes interrompues | Stroke dashé |
-| `twotone` | Deux couleurs | Stroke + opacité |
+| Variant   | Description         | Rendu               |
+| --------- | ------------------- | ------------------- |
+| `linear`  | Outline simple      | Stroke uniquement   |
+| `bold`    | Rempli              | Fill solid          |
+| `outline` | Outline détaillé    | Stroke avec détails |
+| `bulk`    | Deux tons           | Fill avec opacité   |
+| `broken`  | Lignes interrompues | Stroke dashé        |
+| `twotone` | Deux couleurs       | Stroke + opacité    |
 
 ### 5. Types TypeScript
 
@@ -223,9 +237,9 @@ interface IconProps {
 export default defineNuxtConfig({
   modules: ['@ratoufa/iconsax-nuxt'],
   iconsax: {
-    prefix: 'Is',      // Préfixe des composants
-    global: false      // Enregistrer toutes les icônes globalement
-  }
+    prefix: 'Is', // Préfixe des composants
+    global: false, // Enregistrer toutes les icônes globalement
+  },
 })
 ```
 
@@ -244,36 +258,36 @@ export default defineNuxtConfig({
 
 ### Stack technique
 
-| Technologie | Version | Usage |
-|-------------|---------|-------|
-| **Vue.js** | 3.4+ | Framework UI |
-| **TypeScript** | 5.3+ | Typage |
-| **Vite** | 5.0+ | Build tool |
-| **tsup** | 8.0+ | Bundle package |
-| **Vitest** | 1.1+ | Tests |
-| **pnpm** | 8.12+ | Package manager |
-| **Nuxt** | 3.9+ | Framework SSR (module) |
+| Technologie    | Version | Usage                  |
+| -------------- | ------- | ---------------------- |
+| **Vue.js**     | 3.4+    | Framework UI           |
+| **TypeScript** | 5.3+    | Typage                 |
+| **Vite**       | 5.0+    | Build tool             |
+| **tsup**       | 8.0+    | Bundle package         |
+| **Vitest**     | 1.1+    | Tests                  |
+| **pnpm**       | 8.12+   | Package manager        |
+| **Nuxt**       | 3.9+    | Framework SSR (module) |
 
 ### Compatibilité
 
 | Environnement | Support |
-|---------------|---------|
-| Vue 3.3+ | ✅ |
-| Nuxt 3.0+ | ✅ |
-| TypeScript 5+ | ✅ |
-| Node.js 18+ | ✅ |
-| ESM | ✅ |
-| CommonJS | ✅ |
-| SSR | ✅ |
+| ------------- | ------- |
+| Vue 3.3+      | ✅      |
+| Nuxt 3.0+     | ✅      |
+| TypeScript 5+ | ✅      |
+| Node.js 18+   | ✅      |
+| ESM           | ✅      |
+| CommonJS      | ✅      |
+| SSR           | ✅      |
 
 ### Performance
 
-| Métrique | Objectif |
-|----------|----------|
-| Bundle size (1 icône) | < 1KB gzip |
-| Bundle size (10 icônes) | < 5KB gzip |
-| Tree-shaking | 100% efficace |
-| Temps de build | < 30s |
+| Métrique                | Objectif      |
+| ----------------------- | ------------- |
+| Bundle size (1 icône)   | < 1KB gzip    |
+| Bundle size (10 icônes) | < 5KB gzip    |
+| Tree-shaking            | 100% efficace |
+| Temps de build          | < 30s         |
 
 ---
 
@@ -281,21 +295,21 @@ export default defineNuxtConfig({
 
 ### Types de tests
 
-| Type | Framework | Couverture |
-|------|-----------|------------|
-| Unitaires | Vitest | Composants, types |
-| Snapshot | Vitest | Rendu SVG |
-| Integration | Vitest | Exports, props |
+| Type        | Framework | Couverture        |
+| ----------- | --------- | ----------------- |
+| Unitaires   | Vitest    | Composants, types |
+| Snapshot    | Vitest    | Rendu SVG         |
+| Integration | Vitest    | Exports, props    |
 
 ### Fichiers de test
 
-| Fichier | Description |
-|---------|-------------|
-| `icons.test.ts` | Tests des composants individuels |
-| `dynamic-icon.test.ts` | Tests du composant `IsIcon` |
-| `types.test.ts` | Validation des types TypeScript |
-| `snapshots.test.ts` | Snapshots des rendus |
-| `exports.test.ts` | Vérification des exports |
+| Fichier                | Description                      |
+| ---------------------- | -------------------------------- |
+| `icons.test.ts`        | Tests des composants individuels |
+| `dynamic-icon.test.ts` | Tests du composant `IsIcon`      |
+| `types.test.ts`        | Validation des types TypeScript  |
+| `snapshots.test.ts`    | Snapshots des rendus             |
+| `exports.test.ts`      | Vérification des exports         |
 
 ### Commandes
 
@@ -310,6 +324,7 @@ pnpm test:coverage # Avec couverture
 ## 🚀 Roadmap
 
 ### Phase 1 : MVP ✅
+
 - [x] Structure du monorepo
 - [x] Script de fetch des icônes
 - [x] Script de génération Vue
@@ -319,11 +334,13 @@ pnpm test:coverage # Avec couverture
 - [x] Tests unitaires
 
 ### Phase 2 : Nuxt & Iconify ✅
+
 - [x] Module `@ratoufa/iconsax-nuxt`
 - [x] Package `@iconify-json/iconsax`
 - [x] Script de génération Iconify
 
 ### Phase 3 : Publication (À faire)
+
 - [ ] Télécharger les 6000 SVGs complets
 - [ ] Générer tous les composants
 - [ ] Publier sur npm
@@ -331,6 +348,7 @@ pnpm test:coverage # Avec couverture
 - [ ] CI/CD GitHub Actions
 
 ### Phase 4 : Améliorations (Futur)
+
 - [ ] Playground interactif
 - [ ] Plugin VS Code (snippets)
 - [ ] Icônes animées
@@ -363,7 +381,7 @@ import { IsHome, IsIcon } from '@ratoufa/iconsax-vue'
 <template>
   <!-- Import statique -->
   <IsHome variant="bold" size="24" color="#6366f1" />
-  
+
   <!-- Import dynamique -->
   <IsIcon name="setting" variant="linear" />
 </template>
@@ -374,7 +392,7 @@ import { IsHome, IsIcon } from '@ratoufa/iconsax-vue'
 ```typescript
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@ratoufa/iconsax-nuxt']
+  modules: ['@ratoufa/iconsax-nuxt'],
 })
 ```
 
@@ -398,16 +416,19 @@ export default defineNuxtConfig({
 ## 🔐 Sécurité & Maintenance
 
 ### Dépendances
+
 - Mise à jour mensuelle des dépendances
 - Audit de sécurité avec `pnpm audit`
 - Dependabot activé sur GitHub
 
 ### Versioning
+
 - Semantic Versioning (SemVer)
 - Changelog automatique
 - Tags Git pour chaque release
 
 ### CI/CD (À configurer)
+
 ```yaml
 # .github/workflows/ci.yml
 - Lint (ESLint)
@@ -421,19 +442,20 @@ export default defineNuxtConfig({
 
 ## 📊 Métriques de succès
 
-| Métrique | Objectif |
-|----------|----------|
-| Téléchargements npm/semaine | > 1000 |
-| Stars GitHub | > 100 |
-| Issues ouverts | < 5 |
-| Couverture de tests | > 80% |
-| Temps de réponse issues | < 48h |
+| Métrique                    | Objectif |
+| --------------------------- | -------- |
+| Téléchargements npm/semaine | > 1000   |
+| Stars GitHub                | > 100    |
+| Issues ouverts              | < 5      |
+| Couverture de tests         | > 80%    |
+| Temps de réponse issues     | < 48h    |
 
 ---
 
 ## 📚 Ressources
 
 ### Liens utiles
+
 - [Iconsax officiel](https://iconsax.io/)
 - [Vue 3 Documentation](https://vuejs.org/)
 - [Nuxt 3 Documentation](https://nuxt.com/)
@@ -441,6 +463,7 @@ export default defineNuxtConfig({
 - [Vitest](https://vitest.dev/)
 
 ### Inspiration
+
 - [Lucide Icons](https://lucide.dev/)
 - [Heroicons](https://heroicons.com/)
 - [Tabler Icons](https://tabler-icons.io/)
@@ -450,6 +473,7 @@ export default defineNuxtConfig({
 ## 📝 Changelog
 
 ### v1.0.0 (À venir)
+
 - 🎉 Release initiale
 - ✅ 1000+ icônes
 - ✅ 6 variants

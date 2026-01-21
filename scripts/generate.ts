@@ -10,7 +10,7 @@ const ICONS_DIR = './icons'
 const OUTPUT_DIR = './packages/vue/src'
 const VARIANTS = ['bold', 'broken', 'bulk', 'linear', 'outline', 'twotone'] as const
 
-type Variant = typeof VARIANTS[number]
+type Variant = (typeof VARIANTS)[number]
 
 interface IconData {
   name: string
@@ -41,14 +41,19 @@ function pascalToKebab(str: string): string {
 }
 
 // Parse SVG and extract inner content
-function parseSvg(svgContent: string): { viewBox: string; content: string; attrs: Record<string, string> } {
+function parseSvg(svgContent: string): {
+  viewBox: string
+  content: string
+  attrs: Record<string, string>
+  isStrokeBased: boolean
+} {
   const viewBoxMatch = svgContent.match(/viewBox="([^"]+)"/)
   const viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24'
-  
+
   // Extract attributes from svg tag
   const svgTagMatch = svgContent.match(/<svg([^>]*)>/)
   const attrs: Record<string, string> = {}
-  
+
   if (svgTagMatch) {
     const attrString = svgTagMatch[1]
     const attrMatches = attrString.matchAll(/(\w+(?:-\w+)*)="([^"]+)"/g)
@@ -59,27 +64,38 @@ function parseSvg(svgContent: string): { viewBox: string; content: string; attrs
       }
     }
   }
-  
-  // Extract inner content
-  const content = svgContent
+
+  // Determine if stroke-based (has stroke="currentColor" on svg tag or fill="none")
+  const isStrokeBased = svgContent.includes('stroke="currentColor"') || attrs['fill'] === 'none'
+
+  // Extract inner content and replace hardcoded colors with currentColor
+  let content = svgContent
     .replace(/<svg[^>]*>/, '')
     .replace(/<\/svg>/, '')
     .trim()
-  
-  return { viewBox, content, attrs }
+
+  // Replace hardcoded Iconsax colors with currentColor
+  content = content
+    .replace(/fill="#292D32"/g, 'fill="currentColor"')
+    .replace(/stroke="#292D32"/g, 'stroke="currentColor"')
+
+  return { viewBox, content, attrs, isStrokeBased }
 }
 
 // Generate component template for a single icon
 function generateIconComponent(icon: IconData): string {
-  const svgDataMap: Record<string, { viewBox: string; content: string; attrs: Record<string, string> }> = {}
-  
+  const svgDataMap: Record<
+    string,
+    { viewBox: string; content: string; attrs: Record<string, string>; isStrokeBased: boolean }
+  > = {}
+
   for (const variant of VARIANTS) {
     const svg = icon.svgs[variant]
     if (svg) {
       svgDataMap[variant] = parseSvg(svg)
     }
   }
-  
+
   // Use linear as default, fallback to first available
   const defaultVariant = svgDataMap.linear ? 'linear' : Object.keys(svgDataMap)[0]
   const defaultData = svgDataMap[defaultVariant]
@@ -94,7 +110,7 @@ const props = withDefaults(defineProps<IconProps>(), {
   variant: 'linear'
 })
 
-const svgSize = computed(() => 
+const svgSize = computed(() =>
   typeof props.size === 'number' ? \`\${props.size}px\` : props.size
 )
 
@@ -104,7 +120,8 @@ ${VARIANTS.map(v => {
   if (!data) return `  ${v}: null`
   return `  ${v}: {
     viewBox: '${data.viewBox}',
-    content: \`${data.content.replace(/`/g, '\\`')}\`
+    content: \`${data.content.replace(/`/g, '\\`')}\`,
+    isStroke: ${data.isStrokeBased}
   }`
 }).join(',\n')}
 }
@@ -118,8 +135,9 @@ const currentVariant = computed(() => svgData[props.variant] || svgData.${defaul
     :viewBox="currentVariant?.viewBox"
     :width="svgSize"
     :height="svgSize"
-    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
-    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    :fill="currentVariant?.isStroke ? 'none' : 'currentColor'"
+    :stroke="currentVariant?.isStroke ? 'currentColor' : 'none'"
+    :style="{ color }"
     v-html="currentVariant?.content"
   />
 </template>
@@ -258,7 +276,7 @@ async function main() {
     }
 
     const files = readdirSync(variantDir).filter(f => f.endsWith('.svg'))
-    
+
     for (const file of files) {
       const rawName = basename(file, '.svg')
       const kebabName = sanitizeName(rawName)
@@ -269,7 +287,7 @@ async function main() {
           name: kebabName,
           kebabName,
           pascalName: kebabToPascal(kebabName),
-          svgs: {}
+          svgs: {},
         })
       }
 

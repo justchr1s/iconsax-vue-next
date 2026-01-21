@@ -60,7 +60,7 @@ describe('Package Exports', () => {
 
     it('iconVariants contains all expected variants', () => {
       const expectedVariants = ['bold', 'broken', 'bulk', 'linear', 'outline', 'twotone']
-      
+
       expectedVariants.forEach(variant => {
         expect(IconsaxVue.iconVariants).toContain(variant)
       })
@@ -71,7 +71,7 @@ describe('Package Exports', () => {
 describe('Named Imports', () => {
   it('supports named imports for components', () => {
     const { IsHome, IsSetting, IsUser } = IconsaxVue
-    
+
     expect(IsHome).toBeDefined()
     expect(IsSetting).toBeDefined()
     expect(IsUser).toBeDefined()
@@ -79,7 +79,7 @@ describe('Named Imports', () => {
 
   it('supports named imports for types', () => {
     const { iconNames, iconVariants } = IconsaxVue
-    
+
     expect(iconNames).toBeDefined()
     expect(iconVariants).toBeDefined()
   })

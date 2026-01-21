@@ -74,33 +74,33 @@ const menuItems: { icon: IconName; label: string }[] = [
 
 ### Icon Components (`IsHome`, `IsSetting`, etc.)
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `number \| string` | `24` | Icon size in pixels or CSS value |
-| `color` | `string` | `'currentColor'` | Icon color |
-| `variant` | `IconVariant` | `'linear'` | Icon style variant |
+| Prop      | Type               | Default          | Description                      |
+| --------- | ------------------ | ---------------- | -------------------------------- |
+| `size`    | `number \| string` | `24`             | Icon size in pixels or CSS value |
+| `color`   | `string`           | `'currentColor'` | Icon color                       |
+| `variant` | `IconVariant`      | `'linear'`       | Icon style variant               |
 
 ### Dynamic Component (`IsIcon`)
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `name` | `IconName` | required | Icon name (with autocompletion) |
-| `size` | `number \| string` | `24` | Icon size |
-| `color` | `string` | `'currentColor'` | Icon color |
-| `variant` | `IconVariant` | `'linear'` | Icon style variant |
+| Prop      | Type               | Default          | Description                     |
+| --------- | ------------------ | ---------------- | ------------------------------- |
+| `name`    | `IconName`         | required         | Icon name (with autocompletion) |
+| `size`    | `number \| string` | `24`             | Icon size                       |
+| `color`   | `string`           | `'currentColor'` | Icon color                      |
+| `variant` | `IconVariant`      | `'linear'`       | Icon style variant              |
 
 ## Variants
 
 Each icon is available in 6 different styles:
 
-| Variant | Description |
-|---------|-------------|
-| `linear` | Clean outline style (default) |
-| `bold` | Filled solid style |
-| `outline` | Detailed outline |
-| `bulk` | Two-tone with opacity |
-| `broken` | Broken/dashed lines |
-| `twotone` | Two-color style |
+| Variant   | Description                   |
+| --------- | ----------------------------- |
+| `linear`  | Clean outline style (default) |
+| `bold`    | Filled solid style            |
+| `outline` | Detailed outline              |
+| `bulk`    | Two-tone with opacity         |
+| `broken`  | Broken/dashed lines           |
+| `twotone` | Two-color style               |
 
 ```vue
 <template>

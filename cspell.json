@@ -33,7 +33,5 @@
     "packages/iconify/icons.json",
     "coverage"
   ],
-  "ignoreRegExpList": [
-    "/Is[A-Z][a-zA-Z0-9]+/g"
-  ]
+  "ignoreRegExpList": ["/Is[A-Z][a-zA-Z0-9]+/g"]
 }
