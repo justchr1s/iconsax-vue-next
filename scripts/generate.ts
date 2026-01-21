@@ -20,8 +20,17 @@ interface IconData {
 }
 
 // Utils
-function kebabToPascal(str: string): string {
+function sanitizeName(str: string): string {
+  // Replace special characters with valid alternatives
   return str
+    .replace(/&/g, '-and-')
+    .replace(/[^a-zA-Z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+function kebabToPascal(str: string): string {
+  return sanitizeName(str)
     .split('-')
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
     .join('')
@@ -204,6 +213,9 @@ export interface DynamicIconProps extends IconProps {
 `
 }
 
+// Reserved names that conflict with dynamic IsIcon component
+const RESERVED_NAMES = ['icon']
+
 // Generate main index.ts
 function generateIndex(iconNames: string[]): string {
   const imports = iconNames.map(name => {
@@ -248,9 +260,10 @@ async function main() {
     const files = readdirSync(variantDir).filter(f => f.endsWith('.svg'))
     
     for (const file of files) {
-      const kebabName = basename(file, '.svg')
+      const rawName = basename(file, '.svg')
+      const kebabName = sanitizeName(rawName)
       const svgContent = readFileSync(join(variantDir, file), 'utf-8')
-      
+
       if (!iconsMap.has(kebabName)) {
         iconsMap.set(kebabName, {
           name: kebabName,
@@ -259,12 +272,15 @@ async function main() {
           svgs: {}
         })
       }
-      
+
       iconsMap.get(kebabName)!.svgs[variant] = svgContent
     }
   }
 
-  const icons = Array.from(iconsMap.values()).sort((a, b) => a.name.localeCompare(b.name))
+  // Filter out reserved names that conflict with dynamic component
+  const icons = Array.from(iconsMap.values())
+    .filter(icon => !RESERVED_NAMES.includes(icon.kebabName))
+    .sort((a, b) => a.name.localeCompare(b.name))
   const iconNames = icons.map(i => i.kebabName)
 
   console.log(`📦 Found ${icons.length} unique icons`)

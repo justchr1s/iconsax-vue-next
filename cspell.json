@@ -1,0 +1,39 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "iconsax",
+    "iconname",
+    "ratoufa",
+    "nuxt",
+    "nuxi",
+    "tsup",
+    "vitest",
+    "vite",
+    "vuesax",
+    "composables",
+    "esbuild",
+    "treeshake",
+    "iconify",
+    "twotone",
+    "kebab",
+    "pascal",
+    "currentcolor",
+    "viewbox",
+    "autoimport",
+    "autoimports",
+    "unplugin",
+    "svgs"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    "pnpm-lock.yaml",
+    "icons/**/*.svg",
+    "packages/iconify/icons.json",
+    "coverage"
+  ],
+  "ignoreRegExpList": [
+    "/Is[A-Z][a-zA-Z0-9]+/g"
+  ]
+}

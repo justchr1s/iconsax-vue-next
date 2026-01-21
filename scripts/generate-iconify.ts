@@ -12,6 +12,15 @@ const TYPES_FILE = './packages/iconify/index.d.ts'
 
 const VARIANTS = ['bold', 'broken', 'bulk', 'linear', 'outline', 'twotone'] as const
 
+// Sanitize icon names to be valid identifiers
+function sanitizeName(str: string): string {
+  return str
+    .replace(/&/g, '-and-')
+    .replace(/[^a-zA-Z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
 interface IconifyIcon {
   body: string
   width?: number
@@ -83,7 +92,8 @@ async function main() {
     const files = readdirSync(variantDir).filter(f => f.endsWith('.svg'))
     
     for (const file of files) {
-      const iconName = basename(file, '.svg')
+      const rawName = basename(file, '.svg')
+      const iconName = sanitizeName(rawName)
       iconNames.add(iconName)
       
       const svgContent = readFileSync(join(variantDir, file), 'utf-8')

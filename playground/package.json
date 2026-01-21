@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ratoufa/iconsax-vue": "workspace:*",
     "vue": "^3.4.0"
   },
   "devDependencies": {
