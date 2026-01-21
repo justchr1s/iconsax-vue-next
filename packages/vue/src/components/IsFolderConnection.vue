@@ -1,0 +1,62 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import type { IconProps } from '../types'
+
+const props = withDefaults(defineProps<IconProps>(), {
+  size: 24,
+  color: 'currentColor',
+  variant: 'linear'
+})
+
+const svgSize = computed(() => 
+  typeof props.size === 'number' ? `${props.size}px` : props.size
+)
+
+const svgData = {
+  bold: {
+    viewBox: '0 0 24 24',
+    content: `<path d="M12.75 16h2.75c2.8 0 3.5-.7 3.5-3.5V8.3c0-2.8-.7-3.5-3.5-3.5h-2.1c-.7 0-.85-.21-1.12-.56l-1.05-1.4c-.4-.53-.63-.84-1.68-.84H8.5C5.7 2 5 2.7 5 5.5v7c0 2.8.7 3.5 3.5 3.5h2.75v3c0 .05.02.09.03.14a2 2 0 00-1.14 1.14c-.05-.01-.09-.03-.14-.03H6c-.41 0-.75.34-.75.75s.34.75.75.75h4c.05 0 .09-.02.14-.03a1.992 1.992 0 003.72 0c.05.01.09.03.14.03h4c.41 0 .75-.34.75-.75s-.34-.75-.75-.75h-4c-.05 0-.09.02-.14.03a2 2 0 00-1.14-1.14c.01-.05.03-.09.03-.14v-3z"/>`
+  },
+  broken: {
+    viewBox: '0 0 24 24',
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M12 16v3M10 21c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2M18 21h-4M10 21H6M5 5.5C5 2.7 5.7 2 8.5 2h1.05c1.05 0 1.28.31 1.68.84l1.05 1.4c.27.35.42.56 1.12.56h2.1c2.8 0 3.5.7 3.5 3.5v4.2c0 2.8-.7 3.5-3.5 3.5h-7C5.7 16 5 15.3 5 12.5V9.34"/>`
+  },
+  bulk: {
+    viewBox: '0 0 24 24',
+    content: `<path d="M18.75 21c0 .41-.34.75-.75.75h-4c-.05 0-.09-.02-.14-.03a1.992 1.992 0 01-3.72 0c-.05.01-.09.03-.14.03H6c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h4c.05 0 .09.02.14.03a2 2 0 011.14-1.14c-.01-.05-.03-.09-.03-.14v-3h1.5v3c0 .05-.02.09-.03.14a2 2 0 011.14 1.14c.05-.01.09-.03.14-.03h4c.41 0 .75.34.75.75z" opacity=".4"/>
+  <path d="M19 8.3v4.2c0 2.8-.7 3.5-3.5 3.5h-7C5.7 16 5 15.3 5 12.5v-7C5 2.7 5.7 2 8.5 2h1.05c1.05 0 1.28.31 1.68.84l1.05 1.4c.27.35.42.56 1.12.56h2.1c2.8 0 3.5.7 3.5 3.5z"/>`
+  },
+  linear: {
+    viewBox: '0 0 24 24',
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M12 16v3M12 23a2 2 0 100-4 2 2 0 000 4zM18 21h-4M10 21H6"/>
+  <path stroke-miterlimit="10" stroke-width="1.5" d="M19 8.3v4.2c0 2.8-.7 3.5-3.5 3.5h-7C5.7 16 5 15.3 5 12.5v-7C5 2.7 5.7 2 8.5 2h1.05c1.05 0 1.28.31 1.68.84l1.05 1.4c.27.35.42.56 1.12.56h2.1c2.8 0 3.5.7 3.5 3.5z"/>`
+  },
+  outline: {
+    viewBox: '0 0 24 24',
+    content: `<path d="M12 19.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75z"/>
+  <path d="M12 23.75c-1.52 0-2.75-1.23-2.75-2.75s1.23-2.75 2.75-2.75 2.75 1.23 2.75 2.75-1.23 2.75-2.75 2.75zm0-4a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
+  <path d="M18 21.75h-4c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h4c.41 0 .75.34.75.75s-.34.75-.75.75zM10 21.75H6c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h4c.41 0 .75.34.75.75s-.34.75-.75.75zM15.5 16.75h-7c-3.22 0-4.25-1.03-4.25-4.25v-7c0-3.22 1.03-4.25 4.25-4.25h1.05c1.33 0 1.76.45 2.28 1.14l1.05 1.4c.2.26.2.26.52.26h2.1c3.22 0 4.25 1.03 4.25 4.25v4.2c0 3.22-1.03 4.25-4.25 4.25zm-7-14c-2.39 0-2.75.36-2.75 2.75v7c0 2.39.36 2.75 2.75 2.75h7c2.39 0 2.75-.36 2.75-2.75V8.3c0-2.39-.36-2.75-2.75-2.75h-2.1c-.99 0-1.35-.37-1.71-.85l-1.06-1.41c-.35-.47-.4-.54-1.08-.54H8.5z"/>`
+  },
+  twotone: {
+    viewBox: '0 0 24 24',
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M12 16v3" opacity=".4"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M12 23a2 2 0 100-4 2 2 0 000 4z"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="M18 21h-4M10 21H6" opacity=".4"/>
+  <path stroke-miterlimit="10" stroke-width="1.5" d="M19 8.3v4.2c0 2.8-.7 3.5-3.5 3.5h-7C5.7 16 5 15.3 5 12.5v-7C5 2.7 5.7 2 8.5 2h1.05c1.05 0 1.28.31 1.68.84l1.05 1.4c.27.35.42.56 1.12.56h2.1c2.8 0 3.5.7 3.5 3.5z"/>`
+  }
+}
+
+const currentVariant = computed(() => svgData[props.variant] || svgData.linear)
+</script>
+
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    :viewBox="currentVariant?.viewBox"
+    :width="svgSize"
+    :height="svgSize"
+    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
+    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    v-html="currentVariant?.content"
+  />
+</template>

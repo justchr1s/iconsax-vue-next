@@ -1,0 +1,61 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import type { IconProps } from '../types'
+
+const props = withDefaults(defineProps<IconProps>(), {
+  size: 24,
+  color: 'currentColor',
+  variant: 'linear'
+})
+
+const svgSize = computed(() => 
+  typeof props.size === 'number' ? `${props.size}px` : props.size
+)
+
+const svgData = {
+  bold: {
+    viewBox: '0 0 24 24',
+    content: `<path d="M21.3 12.23h-3.48c-.98 0-1.85.54-2.29 1.42l-.84 1.66c-.2.4-.6.65-1.04.65h-3.28c-.31 0-.75-.07-1.04-.65l-.84-1.65a2.567 2.567 0 00-2.29-1.42H2.7c-.39 0-.7.31-.7.7v3.26C2 19.83 4.18 22 7.82 22h8.38c3.43 0 5.54-1.88 5.8-5.22v-3.85c0-.38-.31-.7-.7-.7z"/>
+  <path d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81v3.04c.22-.08.46-.12.7-.12h3.5c1.55 0 2.94.86 3.63 2.25l.75 1.47h2.86l.75-1.48a4.035 4.035 0 013.63-2.24h3.48c.24 0 .48.04.7.12V7.81C22 4.17 19.83 2 16.19 2zm-5.74 3.41h3.1c.38 0 .7.31.7.69 0 .39-.32.7-.7.7h-3.1c-.38 0-.7-.31-.7-.7a.7.7 0 01.7-.69zm3.88 4.18H9.67c-.38 0-.69-.31-.69-.69 0-.39.31-.7.69-.7h4.66c.38 0 .69.31.69.7 0 .38-.31.69-.69.69z"/>`
+  },
+  broken: {
+    viewBox: '0 0 24 24',
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.69 19.01C3.65 21.1 5.65 22 9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 13h3.76a2 2 0 011.79 1.11l.89 1.79C9 17 10 17 10.24 17h3.53a2 2 0 001.79-1.11l.89-1.79a2 2 0 011.79-1.11h3.74M13.66 10h.84M9.5 10h1.58M10.34 7h3.33"/>`
+  },
+  bulk: {
+    viewBox: '0 0 24 24',
+    content: `<path d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81v8.37C2 19.83 4.17 22 7.81 22h8.37c3.64 0 5.81-2.17 5.81-5.81V7.81C22 4.17 19.83 2 16.19 2z" opacity=".4"/>
+  <path d="M21.3 12.23h-3.48c-.98 0-1.85.54-2.29 1.42l-.84 1.66c-.2.4-.6.65-1.04.65h-3.28c-.31 0-.75-.07-1.04-.65l-.84-1.65a2.567 2.567 0 00-2.29-1.42H2.7c-.39 0-.7.31-.7.7v3.26C2 19.83 4.18 22 7.82 22h8.38c3.43 0 5.54-1.88 5.8-5.22v-3.85c0-.38-.31-.7-.7-.7zM13.55 7.8h-3.1c-.39 0-.7-.31-.7-.7 0-.39.31-.7.7-.7h3.1c.39 0 .7.31.7.7 0 .39-.32.7-.7.7zM14.33 10.59H9.67c-.39 0-.7-.31-.7-.7 0-.39.31-.7.7-.7h4.65c.39 0 .7.31.7.7 0 .39-.31.7-.69.7z"/>`
+  },
+  linear: {
+    viewBox: '0 0 24 24',
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7z"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 13h3.76a2 2 0 011.79 1.11l.89 1.79C9 17 10 17 10.24 17h3.53a2 2 0 001.79-1.11l.89-1.79a2 2 0 011.79-1.11h3.74M10.34 7h3.33M9.5 10h5"/>`
+  },
+  outline: {
+    viewBox: '0 0 24 24',
+    content: `<path d="M15 22.75H9c-5.43 0-7.75-2.32-7.75-7.75V9c0-5.43 2.32-7.75 7.75-7.75h6c5.43 0 7.75 2.32 7.75 7.75v6c0 5.43-2.32 7.75-7.75 7.75zm-6-20C4.39 2.75 2.75 4.39 2.75 9v6c0 4.61 1.64 6.25 6.25 6.25h6c4.61 0 6.25-1.64 6.25-6.25V9c0-4.61-1.64-6.25-6.25-6.25H9z"/>
+  <path d="M13.76 17.75h-3.53c-1.1 0-1.97-.54-2.46-1.52l-.89-1.79c-.21-.43-.64-.69-1.12-.69H1.99c-.41 0-.75-.34-.75-.75s.35-.75.76-.75h3.76c1.05 0 1.99.58 2.46 1.52l.89 1.79c.23.46.6.69 1.12.69h3.53c.48 0 .91-.26 1.12-.69l.89-1.79a2.73 2.73 0 012.46-1.52h3.74c.41 0 .75.34.75.75s-.34.75-.75.75h-3.74c-.48 0-.91.26-1.12.69l-.89 1.79a2.73 2.73 0 01-2.46 1.52zM13.67 7.75h-3.33c-.42 0-.76-.34-.76-.75s.34-.75.75-.75h3.33c.41 0 .75.34.75.75s-.33.75-.74.75zM14.5 10.75h-5c-.41 0-.75-.34-.75-.75s.34-.75.75-.75h5c.41 0 .75.34.75.75s-.34.75-.75.75z"/>`
+  },
+  twotone: {
+    viewBox: '0 0 24 24',
+    content: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7z"/>
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 13h3.76a2 2 0 011.79 1.11l.89 1.79C9 17 10 17 10.24 17h3.53a2 2 0 001.79-1.11l.89-1.79a2 2 0 011.79-1.11h3.74M10.34 7h3.33M9.5 10h5" opacity=".4"/>`
+  }
+}
+
+const currentVariant = computed(() => svgData[props.variant] || svgData.linear)
+</script>
+
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    :viewBox="currentVariant?.viewBox"
+    :width="svgSize"
+    :height="svgSize"
+    :fill="variant === 'bold' || variant === 'bulk' ? color : 'none'"
+    :stroke="variant === 'linear' || variant === 'outline' || variant === 'broken' || variant === 'twotone' ? color : undefined"
+    v-html="currentVariant?.content"
+  />
+</template>
