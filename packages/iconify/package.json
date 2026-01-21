@@ -1,0 +1,34 @@
+{
+  "name": "@iconify-json/iconsax",
+  "version": "1.0.0",
+  "description": "Iconsax icons in Iconify JSON format",
+  "author": "Chris",
+  "license": "MIT",
+  "type": "module",
+  "main": "./icons.json",
+  "module": "./icons.json",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./icons.json"
+    },
+    "./icons.json": "./icons.json"
+  },
+  "files": [
+    "icons.json",
+    "index.d.ts"
+  ],
+  "keywords": [
+    "iconify",
+    "icons",
+    "iconsax",
+    "nuxt-icon",
+    "unocss"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ratoufa/iconsax-vue-next",
+    "directory": "packages/iconify"
+  }
+}

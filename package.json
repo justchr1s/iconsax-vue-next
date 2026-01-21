@@ -1,0 +1,39 @@
+{
+  "name": "iconsax-vue-next",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Modern Iconsax icon library for Vue 3 & Nuxt 3 with full TypeScript support",
+  "author": "Chris",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/iconsax-vue-next"
+  },
+  "scripts": {
+    "fetch:icons": "tsx scripts/fetch-icons.ts",
+    "generate": "tsx scripts/generate.ts",
+    "generate:iconify": "tsx scripts/generate-iconify.ts",
+    "generate:all": "tsx scripts/generate.ts && tsx scripts/generate-iconify.ts",
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "dev:playground": "cd playground && pnpm dev",
+    "test": "pnpm -r test:run",
+    "test:watch": "pnpm --filter @ratoufa/iconsax-vue test",
+    "test:coverage": "pnpm --filter @ratoufa/iconsax-vue test:coverage",
+    "lint": "eslint .",
+    "typecheck": "pnpm -r typecheck",
+    "clean": "rimraf packages/*/dist icons/*/*.svg"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.6.2",
+    "typescript": "^5.3.2"
+  },
+  "packageManager": "pnpm@8.12.0",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
