@@ -1,4 +1,4 @@
-import { defineNuxtModule, addComponent, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addComponent } from '@nuxt/kit'
 import { iconNames } from '@ratoufa/iconsax-vue'
 
 export interface ModuleOptions {
@@ -35,8 +35,6 @@ export default defineNuxtModule<ModuleOptions>({
     global: false,
   },
   async setup(options, nuxt) {
-    const { resolve } = createResolver(import.meta.url)
-
     // Add the dynamic IsIcon component (always available)
     addComponent({
       name: `${options.prefix}Icon`,

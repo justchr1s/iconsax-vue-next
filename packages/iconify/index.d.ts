@@ -1,4 +1,4 @@
-// Auto-generated types for @iconify-json/iconsax
+// Auto-generated types for @ratoufa/iconsax-iconify
 
 export type IconsaxIconName =
   | '24-support-bold'

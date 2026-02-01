@@ -1,4 +1,4 @@
-import { describe, it, expect, expectTypeOf } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import type { IconName, IconVariant, IconProps, DynamicIconProps } from '../src/types'
 import { iconNames, iconVariants } from '../src/types'
 

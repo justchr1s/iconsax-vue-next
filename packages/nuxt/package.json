@@ -23,11 +23,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ratoufa/iconsax-vue": "workspace:*",
-    "@nuxt/kit": "^3.9.0"
+    "@nuxt/kit": "^3.9.0",
+    "@ratoufa/iconsax-vue": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/schema": "^4.3.0",
     "nuxt": "^3.9.0",
     "typescript": "^5.3.2"
   },

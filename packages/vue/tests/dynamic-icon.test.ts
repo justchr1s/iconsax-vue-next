@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
-import { defineComponent, h } from 'vue'
 import { IsIcon } from '../src'
+import type { IconName } from '../src'
 
 describe('IsIcon (Dynamic Component)', () => {
   it('renders correctly with valid icon name', async () => {
@@ -39,7 +39,7 @@ describe('IsIcon (Dynamic Component)', () => {
 
     validNames.forEach(name => {
       const wrapper = mount(IsIcon, {
-        props: { name: name as any },
+        props: { name: name as IconName },
       })
       expect(wrapper.exists()).toBe(true)
     })
@@ -58,8 +58,8 @@ describe('IsIcon (Dynamic Component)', () => {
   it('warns when icon name is not found', async () => {
     const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
 
-    const wrapper = mount(IsIcon, {
-      props: { name: 'invalid-icon-name' as any },
+    mount(IsIcon, {
+      props: { name: 'invalid-icon-name' as IconName },
     })
 
     await flushPromises()

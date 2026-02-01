@@ -52,7 +52,7 @@ interface IconifyJSON {
 // Extract body content from SVG
 function extractSvgBody(svgContent: string): string {
   // Remove XML declaration if present
-  let content = svgContent.replace(/<\?xml[^>]*\?>/g, '').trim()
+  const content = svgContent.replace(/<\?xml[^>]*\?>/g, '').trim()
 
   // Extract content between <svg> tags
   const match = content.match(/<svg[^>]*>([\s\S]*)<\/svg>/i)
@@ -148,7 +148,7 @@ async function main() {
     }
   }
 
-  const typesContent = `// Auto-generated types for @iconify-json/iconsax
+  const typesContent = `// Auto-generated types for @ratoufa/iconsax-iconify
 
 export type IconsaxIconName = 
 ${allIconNames.map(n => `  | '${n}'`).join('\n')}

@@ -8,7 +8,7 @@ Iconsax Vue Next is a monorepo providing Iconsax icons for Vue 3 and Nuxt 3. It 
 
 - `@ratoufa/iconsax-vue` - Vue 3 components with tree-shaking and dynamic loading
 - `@ratoufa/iconsax-nuxt` - Nuxt 3 module with auto-imports
-- `@iconify-json/iconsax` - Iconify JSON format for Nuxt Icon/UnoCSS
+- `@ratoufa/iconsax-iconify` - Iconify JSON format for Nuxt Icon/UnoCSS
 
 ## Commands
 

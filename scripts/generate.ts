@@ -36,10 +36,6 @@ function kebabToPascal(str: string): string {
     .join('')
 }
 
-function pascalToKebab(str: string): string {
-  return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()
-}
-
 // Parse SVG and extract inner content
 function parseSvg(svgContent: string): {
   viewBox: string
@@ -98,8 +94,6 @@ function generateIconComponent(icon: IconData): string {
 
   // Use linear as default, fallback to first available
   const defaultVariant = svgDataMap.linear ? 'linear' : Object.keys(svgDataMap)[0]
-  const defaultData = svgDataMap[defaultVariant]
-
   return `<script setup lang="ts">
 import { computed } from 'vue'
 import type { IconProps } from '../types'
