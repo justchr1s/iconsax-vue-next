@@ -74,7 +74,7 @@ const copyCode = (name: IconName) => {
         <kbd v-if="!searchQuery">/</kbd>
       </div>
 
-      <a href="https://github.com" target="_blank" class="github-link">
+      <a href="https://github.com/Ratoufa/iconsax-vue-next" target="_blank" class="github-link">
         <IsIcon name="code" variant="linear" :size="18" color="currentColor" />
         GitHub
       </a>

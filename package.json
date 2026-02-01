@@ -24,6 +24,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "pnpm -r typecheck",
+    "build:playground": "pnpm --filter @ratoufa/iconsax-vue build && pnpm --filter iconsax-playground build",
     "clean": "rimraf packages/*/dist icons/*/*.svg"
   },
   "devDependencies": {
