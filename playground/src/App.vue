@@ -76,7 +76,7 @@ const copyCode = (name: IconName) => {
 
       <a href="https://github.com/Ratoufa/iconsax-vue-next" target="_blank" class="github-link">
         <IsIcon name="code" variant="linear" :size="18" color="currentColor" />
-        GitHub
+        <span>GitHub</span>
       </a>
     </nav>
 
@@ -609,5 +609,162 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border);
+}
+
+/* Responsive: small desktop */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+    padding: 16px;
+    gap: 20px;
+  }
+
+  .main {
+    padding: 16px 20px;
+  }
+}
+
+/* Responsive: tablet */
+@media (max-width: 768px) {
+  .topbar {
+    gap: 12px;
+    padding: 10px 16px;
+  }
+
+  .logo span {
+    display: none;
+  }
+
+  .github-link {
+    padding: 8px;
+  }
+
+  .github-link span {
+    display: none;
+  }
+
+  .search-wrapper {
+    max-width: none;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 16px;
+    gap: 16px;
+    overflow-y: visible;
+  }
+
+  .variant-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .variant-chip {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .preview-section {
+    display: none;
+  }
+
+  .install-section {
+    display: none;
+  }
+
+  .main {
+    padding: 16px;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 6px;
+  }
+
+  .icon-btn {
+    padding: 12px 6px 10px;
+  }
+}
+
+/* Responsive: mobile */
+@media (max-width: 480px) {
+  .topbar {
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  .search-wrapper kbd {
+    display: none;
+  }
+
+  .search {
+    padding: 8px 10px 8px 34px;
+    font-size: 13px;
+  }
+
+  .sidebar {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 6px;
+  }
+
+  .variant-grid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 4px;
+  }
+
+  .variant-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .variant-chip {
+    gap: 6px;
+    padding: 5px 8px;
+    font-size: 11px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .size-picker {
+    gap: 4px;
+  }
+
+  .size-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .main {
+    padding: 12px;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+    gap: 4px;
+  }
+
+  .icon-btn {
+    padding: 10px 4px 8px;
+    gap: 6px;
+  }
+
+  .icon-label {
+    font-size: 9px;
+  }
 }
 </style>

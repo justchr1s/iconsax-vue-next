@@ -1,7 +1,7 @@
 {
   "name": "@ratoufa/iconsax-vue",
-  "version": "1.0.0",
-  "description": "1000+ beautiful Iconsax icons for Vue 3 with full TypeScript support",
+  "version": "1.0.1",
+  "description": "940+ beautiful Iconsax icons for Vue 3 with full TypeScript support",
   "author": "Chris",
   "license": "MIT",
   "type": "module",

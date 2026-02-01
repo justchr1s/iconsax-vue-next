@@ -1,6 +1,6 @@
 # @ratoufa/iconsax-vue
 
-> 1000+ beautiful Iconsax icons for Vue 3 with full TypeScript support
+> 940+ beautiful Iconsax icons for Vue 3 with full TypeScript support
 
 [![npm version](https://img.shields.io/npm/v/@ratoufa/iconsax-vue.svg)](https://www.npmjs.com/package/@ratoufa/iconsax-vue)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/@ratoufa/iconsax-vue)](https://bundlephobia.com/package/@ratoufa/iconsax-vue)
@@ -8,7 +8,7 @@
 
 ## Features
 
-- 🎨 **1000+ Icons** - All Iconsax icons in 6 different styles
+- 🎨 **940+ Icons** - All Iconsax icons in 6 different styles
 - 🔷 **TypeScript** - Full type safety with autocompletion
 - 🌳 **Tree-shakable** - Only import what you use
 - ⚡ **Dynamic Import** - Load icons dynamically by name
